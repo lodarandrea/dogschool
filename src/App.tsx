@@ -2,15 +2,14 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="bg-gray-300">
       <div className=" bg-white flex flex-col text-gray-900 rounded-xl h-screen">
         <header className="flex justify-between mt-3 mx-3">
           <img src={logo} className="h-10" alt="logo" />
           <a className="pr-5" href="#">
-            {' '}
-            ...{' '}
+            ...
           </a>
         </header>
         <div className="flex flex-col flex-1 mt-10">

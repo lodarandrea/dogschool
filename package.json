@@ -24,13 +24,6 @@
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "npm run lint -- --fix"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "prettier"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
