@@ -1,12 +1,14 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../img/logo.svg'
 
 function Header() {
   return (
-    <header className="flex justify-between mt-3 mx-3">
-      <img src={logo} className="h-10" alt="logo" />
+    <div className="flex justify-between mt-3 mx-3">
+      <Link to="/">
+        <img src={logo} className="h-10" alt="logo" />
+      </Link>
       <a className="pr-5">...</a>
-    </header>
+    </div>
   )
 }
 
