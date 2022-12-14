@@ -4,13 +4,13 @@ function Instructors() {
   return (
     <div>
       <div className="contentItems">
-        <Link to="/instuctors">Instructor1</Link>
+        <Link to="/instructors">Instructor1</Link>
       </div>
       <div className="contentItems">
-        <Link to="/instuctors">Instructor2</Link>
+        <Link to="/instructors">Instructor2</Link>
       </div>
       <div className="contentItems">
-        <Link to="/instuctors">Instructor3</Link>
+        <Link to="/instructors">Instructor3</Link>
       </div>
     </div>
   )

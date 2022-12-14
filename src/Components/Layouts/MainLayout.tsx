@@ -6,10 +6,10 @@ import SearchBar from '../SearchBar'
 
 function MainLayout({ enableSearchBar }: { enableSearchBar?: boolean }) {
   return (
-    <div className="bg-gray-300">
-      <div className=" bg-white flex flex-col text-gray-900 h-screen">
+    <div className="bg-slate-700 py-2">
+      <div className=" max-w-lg bg-slate-50 m-auto flex flex-col text-gray-900 h-screen">
         <Header />
-        <div className="flex flex-col flex-1 mt-5">
+        <div className="flex flex-col flex-1 mt-8">
           {enableSearchBar ? <SearchBar /> : null}
           <Outlet />
         </div>

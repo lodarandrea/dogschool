@@ -4,14 +4,14 @@ import '../App.css'
 function Dashboard() {
   return (
     <div>
-      <div className="contentItems">
-        <Link to="/customers">Customers</Link>
+      <div className="contentItems ">
+        <Link to={'/customers'}>Customers</Link>
       </div>
       <div className="contentItems">
-        <Link to="/instuctors">Instructors</Link>
+        <Link to={'/instructors'}>Instructors</Link>
       </div>
       <div className="contentItems">
-        <Link to="/profile">Profile</Link>
+        <Link to={'/profile'}> Profile</Link>
       </div>
     </div>
   )

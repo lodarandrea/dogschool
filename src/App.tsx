@@ -14,8 +14,8 @@ function App(): JSX.Element {
         <Route path="/profile" element={<Profile />}></Route>
       </Route>
       <Route element={<MainLayout enableSearchBar={true} />}>
-        <Route path="customers" element={<Customers />}></Route>
-        <Route path="instuctors" element={<Instructors />}></Route>
+        <Route path="/customers" element={<Customers />}></Route>
+        <Route path="/instructors" element={<Instructors />}></Route>
       </Route>
     </Routes>
   )
