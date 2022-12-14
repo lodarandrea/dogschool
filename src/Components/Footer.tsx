@@ -10,7 +10,7 @@ function Footer() {
       <Link to="/customers" className="px-5">
         Customers
       </Link>
-      <Link to="/instuctors" className="px-5">
+      <Link to="/instructors" className="px-5">
         Instructors
       </Link>
     </div>
