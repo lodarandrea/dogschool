@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../img/logo.svg'
+import { Bars3Icon } from '@heroicons/react/20/solid'
 
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
         <img src={logo} className="h-10" alt="logo" />
         <h3 className="font-bold">Soma Kutyasuli </h3>
       </Link>
-      <a className="pr-5">...</a>
+      <Bars3Icon className=" h-9 w-9 m-4"></Bars3Icon>
     </div>
   )
 }
