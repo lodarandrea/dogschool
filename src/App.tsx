@@ -5,6 +5,7 @@ import Customers from './pages/Customers'
 import Instructors from './pages/Instructors'
 import Profile from './pages/Profile'
 import MainLayout from './Components/Layouts/MainLayout'
+import Customer1 from './pages/CustomerProfileInstr'
 
 function App(): JSX.Element {
   return (
@@ -12,6 +13,7 @@ function App(): JSX.Element {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Dashboard />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/customers/customer1" element={<Customer1 />}></Route>
       </Route>
       <Route element={<MainLayout enableSearchBar={true} />}>
         <Route path="/customers" element={<Customers />}></Route>

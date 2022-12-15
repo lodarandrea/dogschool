@@ -2,7 +2,7 @@
 @tailwind components;
 
 .contentItems {
-  @apply text-3xl font-semibold mx-8 my-7 text-center rounded-lg border-slate-500 border-2 hover:bg-slate-500 hover:text-white active:-translate-y-1 transform transition;
+  @apply text-3xl font-semibold mx-8 my-7 text-center rounded-lg border-slate-500 border-2 hover:bg-slate-500 hover:text-white active:translate-y-1 transform transition;
 }
 
 div.contentItems > a {
