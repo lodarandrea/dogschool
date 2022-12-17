@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
-import ChangeUserButton from '../Components/ChangeUserButton'
+import ChangeUserButton from '../Components/Buttons/ChangeUserButton'
 
 function Dashboard() {
   return (

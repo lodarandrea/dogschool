@@ -1,5 +1,5 @@
 import dog from '../img/dog.png'
-import AttendButton from '../Components/AttendButton'
+import AttendButton from '../Components/Buttons/AttendButton'
 import { useParams } from 'react-router-dom'
 
 function CustomerProfile() {

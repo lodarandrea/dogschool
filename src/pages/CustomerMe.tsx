@@ -1,5 +1,5 @@
-import ExitButton from '../Components/ExitButton'
-import QRCodeButton from '../Components/QRCodeButton'
+import ExitButton from '../Components/Buttons/ExitButton'
+import QRCodeButton from '../Components/Buttons/QRCodeButton'
 import dog from '../img/dog.png'
 
 function CustomerMe() {

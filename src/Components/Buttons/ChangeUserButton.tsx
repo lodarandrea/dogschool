@@ -1,5 +1,5 @@
-import { changeUserRole } from './UserSlice'
-import { useAppDispatch } from '../Hooks'
+import { changeUserRole } from '../UserSlice'
+import { useAppDispatch } from '../../Hooks'
 
 function ChangeUserButton() {
   const dispatcher = useAppDispatch()

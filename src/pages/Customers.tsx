@@ -1,17 +1,20 @@
 import { Link } from 'react-router-dom'
+import CustomerCard from '../Components/CustomerCard'
+import '../App.css'
+import { useAppSelector } from '../Hooks'
 
 function Customers() {
+  const customersList = useAppSelector((state) => state.customer.searchResult)
+
   return (
-    <div>
-      <div className="contentItems">
-        <Link to="/customers/customer1">Customer1</Link>
-      </div>
-      <div className="contentItems">
-        <Link to="/customers/customer1">Customer2</Link>
-      </div>
-      <div className="contentItems">
-        <Link to="/customers/customer1">Customer3</Link>
-      </div>
+    <div className="">
+      {customersList.map((customersList) => (
+        <div className="contentItems">
+          <Link to={`/customers/${customersList.id}`}>
+            <CustomerCard customer={customersList} />
+          </Link>
+        </div>
+      ))}
     </div>
   )
 }

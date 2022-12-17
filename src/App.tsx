@@ -15,7 +15,6 @@ function App(): JSX.Element {
 
   const instructorRoutes = (
     <>
-      <p>Role.Instructor</p>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />}></Route>
@@ -35,7 +34,6 @@ function App(): JSX.Element {
 
   const customerRoutes = (
     <>
-      <p>Customer</p>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<CustomerMe />}></Route>

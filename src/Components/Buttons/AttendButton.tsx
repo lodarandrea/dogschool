@@ -1,5 +1,3 @@
-import '../App.css'
-
 function AttendButton() {
   return (
     <div className="">
