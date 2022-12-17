@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { customersList } from '../model/Customer'
+import { instructorsList } from '../model/Instructors'
 
-export const customerSlice = createSlice({
-  name: 'customer',
+export const instructorSlice = createSlice({
+  name: 'instructor',
 
   initialState: {
-    list: customersList,
-    searchResult: customersList,
+    list: instructorsList,
+    searchResult: instructorsList,
     searchText: '',
   },
   reducers: {
@@ -15,12 +15,12 @@ export const customerSlice = createSlice({
       state.searchResult = state.list.filter(
         (elem) =>
           elem.name.toLowerCase().includes(action.payload.toLowerCase()) ||
-          elem.dog.toLowerCase().includes(action.payload.toLowerCase())
+          elem.role.toLowerCase().includes(action.payload.toLowerCase())
       )
     },
   },
 })
 
-export const { search } = customerSlice.actions
+export const { search } = instructorSlice.actions
 
-export default customerSlice.reducer
+export default instructorSlice.reducer

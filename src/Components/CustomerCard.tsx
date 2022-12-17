@@ -1,4 +1,3 @@
-import React from 'react'
 import dog from '../img/dog.png'
 import Customer from '../model/Customer'
 
