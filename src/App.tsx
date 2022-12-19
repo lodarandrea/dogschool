@@ -6,8 +6,8 @@ import Instructors from './pages/Instructors'
 import InstructorProfile from './pages/InstructorProfile'
 import MainLayout from './Components/Layouts/MainLayout'
 import CustomerProfile from './pages/CustomerProfile'
-import { useAppSelector } from './Hooks'
-import { Role } from './Components/UserSlice'
+import { useAppSelector } from './Store/Hooks'
+import { Role } from './Store/UserSlice'
 import CustomerMe from './pages/CustomerMe'
 
 function App(): JSX.Element {
@@ -20,7 +20,7 @@ function App(): JSX.Element {
           <Route index element={<Dashboard />}></Route>
           <Route path="/customers" element={<Customers />}></Route>
           <Route
-            path="/customers/:customerId"
+            path="customers/:customerId"
             element={<CustomerProfile />}
           ></Route>
           <Route path="/instructors" element={<Instructors />}></Route>

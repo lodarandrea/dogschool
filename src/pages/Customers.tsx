@@ -1,39 +1,31 @@
 import { Link } from 'react-router-dom'
 import CustomerCard from '../Components/CustomerCard'
 import '../App.css'
-import { useAppDispatch, useAppSelector } from '../Hooks'
-import { ChangeEventHandler, FormEvent } from 'react'
-import { search } from '../Components/CustomerSlice'
-
-function SearchBar() {
-  const searchDispatch = useAppDispatch()
-  const searchText = useAppSelector((state) => state.customer.searchText)
-  const handleSubmit = (e: FormEvent<HTMLInputElement>) => e.preventDefault()
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    searchDispatch(search(e.target.value))
-  }
-  return (
-    <div className="mx-8 my-3 p-1">
-      <input
-        className="px-5 text-lg  font-semibold text-white bg-slate-500 block"
-        type="text"
-        value={searchText}
-        placeholder="Search"
-        onSubmit={handleSubmit}
-        onChange={handleChange}
-      ></input>
-    </div>
-  )
-}
+import SearchBar from '../Components/SearchBar'
+import { customersList } from '../model/Customer'
+import { useEffect, useState } from 'react'
 
 function Customers() {
-  const customersList = useAppSelector((state) => state.customer.searchResult)
+  const [filteredCustomersList, setFilteredCustomersList] =
+    useState(customersList)
+  const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    setFilteredCustomersList(
+      customersList.filter((customer) => {
+        return (
+          customer.name.toLowerCase().includes(search.toLowerCase()) ||
+          customer.dog.toLowerCase().includes(search.toLowerCase())
+        )
+      })
+    )
+  }, [search])
 
   return (
     <div>
-      <SearchBar />
+      <SearchBar setSearch={setSearch} />
       <div>
-        {customersList.map((customer) => (
+        {filteredCustomersList.map((customer) => (
           <div className="contentItems">
             <Link to={`/customers/${customer.id}`}>
               <CustomerCard customer={customer} />
