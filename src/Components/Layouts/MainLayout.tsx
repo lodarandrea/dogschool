@@ -8,7 +8,7 @@ function MainLayout() {
     <div className="bg-slate-700 py-2">
       <div className=" max-w-lg bg-slate-50 m-auto flex flex-col text-gray-900 h-screen">
         <Header />
-        <div className="flex flex-col flex-1 mt-8">
+        <div className="flex flex-col flex-1 mt-8 overflow-auto">
           <Outlet />
         </div>
         <Footer />

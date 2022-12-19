@@ -11,10 +11,14 @@ function CustomerCard({ customer }: CustomerCardProps) {
       <img
         src={dog}
         alt="Customer"
-        className="bg-slate-50 w-28 p-3 rounded-full row-span-2"
+        className="bg-slate-50 w-24 p-3 rounded-full row-span-2"
       />
-      <h2 className="col-span-2 text-left">Name: {customer.name}</h2>
-      <h3 className="col-span-2 text-left">Dog name: {customer.dog}</h3>
+      <h2 className="col-span-2 text-left text-xl font-bold">
+        Name: {customer.name}
+      </h2>
+      <h3 className="col-span-2 text-left text-lg font-semibold">
+        Dog name: {customer.dog}
+      </h3>
     </div>
   )
 }
