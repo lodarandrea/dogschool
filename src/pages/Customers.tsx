@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import CustomerCard from '../Components/CustomerCard'
 import '../App.css'
 import SearchBar from '../Components/SearchBar'
 import { customersList } from '../model/Customer'
 import { useEffect, useState } from 'react'
+import Card from '../Components/Card'
+import dog from '../img/dog.png'
 
 function Customers() {
   const [filteredCustomersList, setFilteredCustomersList] =
@@ -28,7 +29,12 @@ function Customers() {
         {filteredCustomersList.map((customer) => (
           <div className="contentItems">
             <Link to={`/customers/${customer.id}`}>
-              <CustomerCard customer={customer} />
+              <Card
+                title={customer.name}
+                subTitleLabel={'Dog name:'}
+                description={customer.dog}
+                imgSrc={dog}
+              />
             </Link>
           </div>
         ))}

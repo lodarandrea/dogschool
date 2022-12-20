@@ -22,4 +22,8 @@ export const instructorsList: Array<Instructors> = [
   },
 ]
 
+export const instructorRoles = instructorsList.map(
+  (instructor) => instructor.role
+)
+
 export default Instructors
