@@ -1,12 +1,11 @@
-import '../App.css'
-
-function SearchBar() {
+function SearchBar(props: { setSearch: (value: string) => void }) {
   return (
-    <div className="mx-8 my-3  bg-slate-500 p-1">
+    <div className=" px-3">
       <input
-        className="px-5 text-lg font-semibold text-white bg-slate-500 border-none"
+        className="px-5 text-lg  font-semibold text-white bg-slate-500"
         type="text"
-        placeholder="Search"
+        placeholder="Search..."
+        onChange={(e) => props.setSearch(e.target.value)}
       ></input>
     </div>
   )

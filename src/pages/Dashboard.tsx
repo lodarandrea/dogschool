@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
+import ChangeUserButton from '../Components/Buttons/ChangeUserButton'
 
 function Dashboard() {
   return (
@@ -13,6 +14,7 @@ function Dashboard() {
       <div className="contentItems">
         <Link to={'/profile'}> Profile</Link>
       </div>
+      <ChangeUserButton />
     </div>
   )
 }
