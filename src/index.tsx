@@ -6,15 +6,22 @@ import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import { store } from './Store'
 import { Provider } from 'react-redux'
+import { Auth0Provider } from '@auth0/auth0-react'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <Auth0Provider
+      domain="tis-tech-academy.eu.auth0.com"
+      clientId="YOZ8QhGw1E8eJayzhR1LU3uGbY9hRZZj"
+      redirectUri={window.location.origin}
+    >
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </Auth0Provider>
   </React.StrictMode>
 )
 

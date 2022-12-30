@@ -33,7 +33,7 @@ test('SearchBar is filtering the list', () => {
   expect(listElements2).toHaveLength(1)
 })
 
-test('the right card is displayed when searching ', () => {
+test('the right card is displayed when searching', () => {
   render(
     <MemoryRouter>
       <Instructors />
