@@ -24,7 +24,9 @@ function Customers() {
 
   return (
     <div>
-      <SearchBar setSearch={setSearch} />
+      <div className="flex justify-center">
+        <SearchBar setSearch={setSearch} />
+      </div>
       <div>
         {filteredCustomersList.map((customer) => (
           <div className="contentItems">

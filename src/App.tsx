@@ -9,6 +9,7 @@ import CustomerProfile from './pages/CustomerProfile'
 import { useAppSelector } from './Store/Hooks'
 import { Role } from './Store/UserSlice'
 import CustomerMe from './pages/CustomerMe'
+import LogIn from './pages/Login'
 
 function App(): JSX.Element {
   const role = useAppSelector((state) => state.user.role)
@@ -16,8 +17,9 @@ function App(): JSX.Element {
   const instructorRoutes = (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Dashboard />}></Route>
+        <Route path="/" element={<LogIn />} />
+        <Route element={<MainLayout />}>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/customers" element={<Customers />}></Route>
           <Route
             path="customers/:customerId"
