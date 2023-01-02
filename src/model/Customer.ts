@@ -1,26 +1,14 @@
+import { useState, useEffect } from 'react'
+
 interface Customer {
-  id: number
   name: string
-  dog: string
-  imageUrl?: string
+  dogName: string
 }
 
-export const customersList: Array<Customer> = [
-  {
-    id: 1,
-    name: 'Beki',
-    dog: 'Black',
-  },
-  {
-    id: 2,
-    name: 'Marcsi',
-    dog: 'Max',
-  },
-  {
-    id: 3,
-    name: 'Dani',
-    dog: 'Dollar',
-  },
-]
+export function CustomersList() {
+  fetch('http://localhost:8080/api/customers').then((response) =>
+    response.json()
+  )
+}
 
 export default Customer

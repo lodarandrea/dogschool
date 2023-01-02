@@ -1,22 +1,23 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
 import SearchBar from '../Components/SearchBar'
-import { customersList } from '../model/Customer'
 import { useEffect, useState } from 'react'
 import Card from '../Components/Card'
 import dog from '../img/dog.png'
+import { CustomersList } from '../model/Customer'
 
 function Customers() {
+  const [customersList, setCustomersList] = useState<Array<Customer>>([])
   const [filteredCustomersList, setFilteredCustomersList] =
-    useState(customersList)
+    useState(CustomersList)
   const [search, setSearch] = useState('')
 
   useEffect(() => {
     setFilteredCustomersList(
-      customersList.filter((customer) => {
+      CustomersList.filter((customer) => {
         return (
           customer.name.toLowerCase().includes(search.toLowerCase()) ||
-          customer.dog.toLowerCase().includes(search.toLowerCase())
+          customer.dogName.toLowerCase().includes(search.toLowerCase())
         )
       })
     )
