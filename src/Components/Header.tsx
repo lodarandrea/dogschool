@@ -1,15 +1,34 @@
 import { Link } from 'react-router-dom'
 import logo from '../img/logo.svg'
 import { UserCircleIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react'
+import LogoutButton from './Buttons/Logout'
 
 function Header() {
+  const [display, setDisplay] = useState('none')
   return (
-    <div className="flex justify-between mt-3 mx-3">
+    <div className="flex justify-between my-3 mx-3">
       <Link to="/dashboard">
         <img src={logo} className="h-10" alt="logo" />
         <h3 className="font-bold">Soma Kutyasuli </h3>
       </Link>
-      <UserCircleIcon className=" h-9 w-9 m-4"></UserCircleIcon>
+      <div className="flex flex-col mx-4 p-2">
+        <button
+          className="block m-auto relative"
+          onClick={() => {
+            if (display === 'none') {
+              setDisplay('block')
+            } else {
+              setDisplay('none')
+            }
+          }}
+        >
+          <UserCircleIcon className=" h-9 w-9"></UserCircleIcon>
+        </button>
+        <div style={{ display: display }} className="absolute top-16 right-36 ">
+          <LogoutButton />
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,16 +1,10 @@
 import React from 'react'
-import {
-  render,
-  screen,
-  fireEvent,
-  getByTestId,
-  getByDisplayValue,
-} from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import Instructors from '../pages/Instructors'
 import { MemoryRouter } from 'react-router-dom'
 
 test('SearchBar is rendered', () => {
-  const { getByTestId, getByRole } = render(
+  render(
     <MemoryRouter>
       <Instructors />
     </MemoryRouter>
