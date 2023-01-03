@@ -2,26 +2,67 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../Components/Card'
 import SearchBar from '../Components/SearchBar'
-import { instructorRoles, instructorsList } from '../model/Instructors'
-import icon from '../img/icon.png'
+
+export interface instructorPayload {
+  id: number
+  name: string
+  description: string
+  trainingType: number
+}
+
+interface instructor {
+  id: number
+  name: string
+  trainingType: string
+}
+
+interface trainingType {
+  id: number
+  name: string
+}
 
 function Instructors() {
+  const [instructorsList, setInstructorsList] = useState<Array<instructor>>([])
   const [filteredInstructorsList, setFilteredInstructorsList] =
     useState(instructorsList)
   const [search, setSearch] = useState('')
   const [value, setValue] = useState('')
+  const [instructorTrainingTypes, setInstructorTrainingTypes] = useState<
+    Array<trainingType>
+  >([])
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/training-types')
+      .then((response) => response.json())
+      .then((trainingTypes: Array<trainingType>) => {
+        setInstructorTrainingTypes(trainingTypes)
+        fetch('http://localhost:8080/api/instructors')
+          .then((response) => response.json())
+          .then((data: Array<instructorPayload>) => {
+            let instructors = data.map((i) => ({
+              ...i,
+              trainingType:
+                trainingTypes.find(({ id, name }) => id === i.trainingType)
+                  ?.name ?? i.trainingType.toString(),
+            }))
+            setInstructorsList(instructors)
+          })
+      })
+  }, [])
 
   useEffect(() => {
     return setFilteredInstructorsList(
       instructorsList.filter((instructor) => {
         return (
           (instructor.name.toLowerCase().includes(search.toLowerCase()) ||
-            instructor.role.toLowerCase().includes(search.toLowerCase())) &&
-          instructor.role.includes(value)
+            instructor.trainingType
+              .toLowerCase()
+              .includes(search.toLowerCase())) &&
+          instructor.trainingType.includes(value)
         )
       })
     )
-  }, [search, value])
+  }, [instructorsList, search, value])
 
   return (
     <div>
@@ -33,8 +74,8 @@ function Instructors() {
           onChange={(e) => setValue(e.target.value)}
         >
           <option value="">Roles</option>
-          {instructorRoles.map((role) => (
-            <option value={role}>{role}</option>
+          {instructorTrainingTypes.map((trainingType) => (
+            <option value={trainingType.name}>{trainingType.name}</option>
           ))}
         </select>
       </div>
@@ -43,10 +84,10 @@ function Instructors() {
           <div className="contentItems">
             <Link to={`/instructors/${instructor.id}`}>
               <Card
-                imgSrc={icon}
+                imgSrc="http://localhost:8080/api/instructors/1/picture"
                 title={instructor.name}
                 subTitleLabel={'Role:'}
-                description={instructor.role}
+                description={instructor.trainingType}
               ></Card>
             </Link>
           </div>

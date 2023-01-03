@@ -1,22 +1,26 @@
-import icon from '../img/icon.png'
-import '../App.css'
-import { useParams } from 'react-router'
+import { useEffect, useState } from 'react'
+import { instructorPayload } from './Instructors'
 
 function InstructorProfile() {
-  const { instructorId } = useParams()
-  return (
+  const [instructor, setInstructor] = useState<instructorPayload | undefined>()
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/instructors/1')
+      .then((response) => response.json())
+      .then((data) => setInstructor(data))
+  }, [])
+
+  return instructor ? (
     <div className="mx-8 my-3">
       <img
-        className="max-w-xs bg-gray-300 p-10 m-auto"
-        src={icon}
+        className="w-56 bg-gray-300 p-1 m-auto"
+        src="http://localhost:8080/api/instructors/1/picture"
         alt="instructor"
       />
-      <h1 className="p-8 text-2xl text-center">
-        Name of the Instructor: {instructorId}
-      </h1>
-      <h2 className="p-6 text-xl text-center">Description and details</h2>
+      <h1 className="p-8 text-2xl text-center">{instructor.name}</h1>
+      <h2 className="p-6 text-xl text-center">{instructor.description}</h2>
     </div>
-  )
+  ) : null
 }
 
 export default InstructorProfile

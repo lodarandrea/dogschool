@@ -3,25 +3,36 @@ import '../App.css'
 import SearchBar from '../Components/SearchBar'
 import { useEffect, useState } from 'react'
 import Card from '../Components/Card'
-import dog from '../img/dog.png'
-import { CustomersList } from '../model/Customer'
+
+export interface Customer {
+  id: number
+  name: string
+  dogName: string
+  description?: string
+}
 
 function Customers() {
   const [customersList, setCustomersList] = useState<Array<Customer>>([])
   const [filteredCustomersList, setFilteredCustomersList] =
-    useState(CustomersList)
+    useState(customersList)
   const [search, setSearch] = useState('')
 
   useEffect(() => {
+    fetch('http://localhost:8080/api/customers')
+      .then((response) => response.json())
+      .then((data) => setCustomersList(data))
+  }, [])
+
+  useEffect(() => {
     setFilteredCustomersList(
-      CustomersList.filter((customer) => {
+      customersList.filter((customer) => {
         return (
           customer.name.toLowerCase().includes(search.toLowerCase()) ||
           customer.dogName.toLowerCase().includes(search.toLowerCase())
         )
       })
     )
-  }, [search])
+  }, [customersList, search])
 
   return (
     <div>
@@ -33,8 +44,8 @@ function Customers() {
               <Card
                 title={customer.name}
                 subTitleLabel={'Dog name:'}
-                description={customer.dog}
-                imgSrc={dog}
+                description={customer.dogName}
+                imgSrc="http://localhost:8080/api/customers/1/picture"
               />
             </Link>
           </div>
