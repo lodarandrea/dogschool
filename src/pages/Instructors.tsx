@@ -36,19 +36,23 @@ function Instructors() {
       .then((response) => response.json())
       .then((trainingTypes: Array<trainingType>) => {
         setInstructorTrainingTypes(trainingTypes)
-        fetch('http://localhost:8080/api/instructors')
-          .then((response) => response.json())
-          .then((data: Array<instructorPayload>) => {
-            let instructors = data.map((i) => ({
-              ...i,
-              trainingType:
-                trainingTypes.find(({ id, name }) => id === i.trainingType)
-                  ?.name ?? i.trainingType.toString(),
-            }))
-            setInstructorsList(instructors)
-          })
       })
   }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/instructors')
+      .then((response) => response.json())
+      .then((data: Array<instructorPayload>) => {
+        let instructors = data.map((i) => ({
+          ...i,
+          trainingType:
+            instructorTrainingTypes.find(
+              ({ id, name }) => id === i.trainingType
+            )?.name ?? i.trainingType.toString(),
+        }))
+        setInstructorsList(instructors)
+      })
+  }, [instructorTrainingTypes])
 
   useEffect(() => {
     return setFilteredInstructorsList(
@@ -75,7 +79,7 @@ function Instructors() {
         >
           <option value="">Roles</option>
           {instructorTrainingTypes.map((trainingType) => (
-            <option value={trainingType.name}>{trainingType.name}</option>
+            <option value={trainingType.id}>{trainingType.name}</option>
           ))}
         </select>
       </div>
