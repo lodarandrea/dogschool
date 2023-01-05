@@ -12,9 +12,8 @@ function Header() {
         <img src={logo} className="h-10" alt="logo" />
         <h3 className="font-bold">Soma Kutyasuli </h3>
       </Link>
-      <div className="flex flex-col mx-4 p-2">
+      <div className="flex flex-col mx-4 py-3 px-10 relative">
         <button
-          className="block m-auto relative"
           onClick={() => {
             if (display === 'none') {
               setDisplay('block')
@@ -25,7 +24,10 @@ function Header() {
         >
           <UserCircleIcon className=" h-9 w-9"></UserCircleIcon>
         </button>
-        <div style={{ display: display }} className="absolute top-16 right-36 ">
+        <div
+          style={{ display: display }}
+          className="absolute top-10 right-2 m-auto "
+        >
           <LogoutButton />
         </div>
       </div>
