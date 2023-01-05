@@ -32,7 +32,7 @@ function Instructors() {
   >([])
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/training-types')
+    fetch(`${process.env.REACT_APP_DATABASE_URL}/training-types`)
       .then((response) => response.json())
       .then((trainingTypes: Array<trainingType>) => {
         setInstructorTrainingTypes(trainingTypes)
@@ -40,7 +40,7 @@ function Instructors() {
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/instructors')
+    fetch(`${process.env.REACT_APP_DATABASE_URL}/instructors`)
       .then((response) => response.json())
       .then((data: Array<instructorPayload>) => {
         let instructors = data.map((i) => ({
@@ -88,7 +88,7 @@ function Instructors() {
           <div className="contentItems">
             <Link to={`/instructors/${instructor.id}`}>
               <Card
-                imgSrc="http://localhost:8080/api/instructors/1/picture"
+                imgSrc={`${process.env.REACT_APP_DATABASE_URL}/instructors/1/picture`}
                 title={instructor.name}
                 subTitleLabel={'Role:'}
                 description={instructor.trainingType}

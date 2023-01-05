@@ -18,7 +18,7 @@ function Customers() {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/customers')
+    fetch(`${process.env.REACT_APP_DATABASE_URL}/customers`)
       .then((response) => response.json())
       .then((data) => setCustomersList(data))
   }, [])
@@ -45,7 +45,7 @@ function Customers() {
                 title={customer.name}
                 subTitleLabel={'Dog name:'}
                 description={customer.dogName}
-                imgSrc="http://localhost:8080/api/customers/1/picture"
+                imgSrc={`${process.env.REACT_APP_DATABASE_URL}/customers/1/picture`}
               />
             </Link>
           </div>
