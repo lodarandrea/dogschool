@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { instructorPayload } from './Instructors'
+import { Instructor } from './Instructors'
 
 function InstructorProfile() {
-  const [instructor, setInstructor] = useState<instructorPayload | undefined>()
+  const [instructor, setInstructor] = useState<Instructor | undefined>()
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_DATABASE_URL}/instructors/1`)

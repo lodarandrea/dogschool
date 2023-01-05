@@ -13,8 +13,6 @@ export interface Customer {
 
 function Customers() {
   const [customersList, setCustomersList] = useState<Array<Customer>>([])
-  const [filteredCustomersList, setFilteredCustomersList] =
-    useState(customersList)
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -23,23 +21,19 @@ function Customers() {
       .then((data) => setCustomersList(data))
   }, [])
 
-  useEffect(() => {
-    setFilteredCustomersList(
-      customersList.filter((customer) => {
-        return (
-          customer.name.toLowerCase().includes(search.toLowerCase()) ||
-          customer.dogName.toLowerCase().includes(search.toLowerCase())
-        )
-      })
+  const handleFilter = customersList.filter((customer) => {
+    return (
+      customer.name.toLowerCase().includes(search.toLowerCase()) ||
+      customer.dogName.toLowerCase().includes(search.toLowerCase())
     )
-  }, [customersList, search])
+  })
 
   return (
     <div>
       <SearchBar setSearch={setSearch} />
       <div>
-        {filteredCustomersList.map((customer) => (
-          <div className="contentItems">
+        {handleFilter.map((customer) => (
+          <div className="contentItems" key={customer.id}>
             <Link to={`/customers/${customer.id}`}>
               <Card
                 title={customer.name}
