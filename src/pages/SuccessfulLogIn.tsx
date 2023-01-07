@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useAppDispatch, useAppSelector } from '../Store/Hooks'
 import { logIn, Role } from '../Store/UserSlice'
