@@ -1,5 +1,5 @@
 import '../App.css'
-import LoginButton from '../Components/Buttons/Login'
+import LoginButton from '../Components/Buttons/LoginButton'
 import logo from '../img/logo.svg'
 import { Link } from 'react-router-dom'
 

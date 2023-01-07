@@ -14,13 +14,13 @@ root.render(
     <Auth0Provider
       domain="tis-tech-academy.eu.auth0.com"
       clientId="YOZ8QhGw1E8eJayzhR1LU3uGbY9hRZZj"
-      redirectUri={window.location.origin}
+      redirectUri={'http://localhost:3000/successfullogin'}
     >
-      <BrowserRouter>
-        <Provider store={store}>
+      <Provider store={store}>
+        <BrowserRouter>
           <App />
-        </Provider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </Provider>
     </Auth0Provider>
   </React.StrictMode>
 )

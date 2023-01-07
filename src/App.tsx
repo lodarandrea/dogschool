@@ -10,42 +10,26 @@ import { useAppSelector } from './Store/Hooks'
 import { Role } from './Store/UserSlice'
 import CustomerMe from './pages/CustomerMe'
 import LogIn from './pages/Login'
+import SuccessfulLogIn from './pages/SuccessfulLogIn'
 
 function App(): JSX.Element {
-  const role = useAppSelector((state) => state.user.role)
-
-  const instructorRoutes = (
-    <>
-      <Routes>
-        <Route path="/" element={<LogIn />} />
-        <Route element={<MainLayout />}>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
-          <Route path="/customers" element={<Customers />}></Route>
-          <Route
-            path="customers/:customerId"
-            element={<CustomerProfile />}
-          ></Route>
-          <Route path="/instructors" element={<Instructors />}></Route>
-          <Route
-            path="instructors/:instructorId"
-            element={<InstructorProfile />}
-          ></Route>
-        </Route>
-      </Routes>
-    </>
+  return (
+    <Routes>
+      <Route path="/" element={<LogIn />} />
+      <Route path="/successfullogin" element={<SuccessfulLogIn />} />
+      <Route element={<MainLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/customers" element={<Customers />} />
+        <Route path="customers/:customerId" element={<CustomerProfile />} />
+        <Route path="/instructors" element={<Instructors />} />
+        <Route
+          path="instructors/:instructorId"
+          element={<InstructorProfile />}
+        />
+      </Route>
+      <Route path="/customerme" element={<CustomerMe />} />
+    </Routes>
   )
-
-  const customerRoutes = (
-    <>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<CustomerMe />}></Route>
-        </Route>
-      </Routes>
-    </>
-  )
-
-  return role === Role.Instructor ? instructorRoutes : customerRoutes
 }
 
 export default App
