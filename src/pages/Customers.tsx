@@ -3,22 +3,15 @@ import '../App.css'
 import SearchBar from '../Components/SearchBar'
 import { useEffect, useState } from 'react'
 import Card from '../Components/Card'
-
-export interface Customer {
-  id: number
-  name: string
-  dogName: string
-  description?: string
-}
+import { myFetch } from '../Services/FetchService'
+import { Customer } from '../model/Customers'
 
 function Customers() {
   const [customersList, setCustomersList] = useState<Array<Customer>>([])
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_DATABASE_URL}/customers`)
-      .then((response) => response.json())
-      .then((data) => setCustomersList(data))
+    myFetch('/customers', setCustomersList)
   }, [])
 
   const handleFilter = customersList.filter((customer) => {
@@ -39,7 +32,7 @@ function Customers() {
                 title={customer.name}
                 subTitleLabel={'Dog name:'}
                 description={customer.dogName}
-                imgSrc={`${process.env.REACT_APP_DATABASE_URL}/customers/1/picture`}
+                imgSrc={`${process.env.REACT_APP_API_URL}/customers/1/picture`}
               />
             </Link>
           </div>

@@ -1,20 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../Components/Card'
+import { myFetch } from '../Services/FetchService'
 import SearchBar from '../Components/SearchBar'
-
-export interface Instructor {
-  id: number
-  name: string
-  description: string
-  trainingType: number
-  trainingTypeName: string
-}
-
-interface TrainingType {
-  id: number
-  name: string
-}
+import { Instructor, TrainingType } from '../model/Instructors'
 
 function Instructors() {
   const [instructorsList, setInstructorsList] = useState<Array<Instructor>>([])
@@ -25,26 +14,19 @@ function Instructors() {
   >([])
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_DATABASE_URL}/training-types`)
-      .then((response) => response.json())
-      .then((trainingTypes: Array<TrainingType>) => {
-        setInstructorTrainingTypes(trainingTypes)
-      })
+    myFetch('/training-types', setInstructorTrainingTypes)
   }, [])
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_DATABASE_URL}/instructors`)
-      .then((response) => response.json())
-      .then((data: Array<Instructor>) => {
-        let instructors = data.map((i) => ({
-          ...i,
-          trainingTypeName:
-            instructorTrainingTypes.find(
-              ({ id, name }) => id === i.trainingType
-            )?.name ?? i.trainingType.toString(),
-        }))
-        setInstructorsList(instructors)
-      })
+    myFetch('/instructors', (data: Array<Instructor>) => {
+      let instructors = data.map((i) => ({
+        ...i,
+        trainingTypeName:
+          instructorTrainingTypes.find(({ id, name }) => id === i.trainingType)
+            ?.name ?? i.trainingType.toString(),
+      }))
+      setInstructorsList(instructors)
+    })
   }, [instructorTrainingTypes])
 
   const handleFilter = instructorsList.filter((instructor) => {
@@ -79,7 +61,7 @@ function Instructors() {
           <div className="contentItems" key={instructor.id}>
             <Link to={`/instructors/${instructor.id}`}>
               <Card
-                imgSrc={`${process.env.REACT_APP_DATABASE_URL}/instructors/1/picture`}
+                imgSrc={`${process.env.REACT_APP_API_URL}/instructors/1/picture`}
                 title={instructor.name}
                 subTitleLabel={'Role:'}
                 description={instructor.trainingTypeName}
