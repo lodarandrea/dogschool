@@ -40,7 +40,7 @@ function Instructors() {
   })
 
   return (
-    <div>
+    <div data-testid="instList">
       <div className="flex justify-center ">
         <SearchBar setSearch={setSearch} />
         <select
@@ -50,7 +50,7 @@ function Instructors() {
         >
           <option value="">Roles</option>
           {instructorTrainingTypes.map((trainingType) => (
-            <option value={trainingType.id} key={trainingType.id}>
+            <option key={trainingType.id} value={trainingType.id}>
               {trainingType.name}
             </option>
           ))}
@@ -58,7 +58,7 @@ function Instructors() {
       </div>
       <div>
         {handleFilter.map((instructor) => (
-          <div className="contentItems" key={instructor.id}>
+          <div role="listitem" key={instructor.id} className="contentItems">
             <Link to={`/instructors/${instructor.id}`}>
               <Card
                 imgSrc={`${process.env.REACT_APP_API_URL}/instructors/1/picture`}
