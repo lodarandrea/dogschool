@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="tis-tech-academy.eu.auth0.com"
-      clientId="YOZ8QhGw1E8eJayzhR1LU3uGbY9hRZZj"
+      domain={`${process.env.REACT_APP_AUTH0_DOMAIN_URL}`}
+      clientId={`${process.env.REACT_APP_AUTH0_CLIENTID}`}
       redirectUri={'http://localhost:3000/successfullogin'}
     >
       <Provider store={store}>
