@@ -24,6 +24,7 @@ function SuccessfulLogIn() {
         logIn({
           name: user.nickname || user.email || 'John Doe',
           email: user.email,
+          user_id: user.sub,
         })
       )
     }

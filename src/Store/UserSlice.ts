@@ -9,6 +9,7 @@ export interface Auth0User {
   name: string
   email?: string
   role?: Role
+  user_id?: string
 }
 
 export const userSlice = createSlice({
@@ -18,14 +19,18 @@ export const userSlice = createSlice({
     auth0User: null as Auth0User | null,
   },
   reducers: {
-    logIn: (state, action: PayloadAction<{ name: string; email?: string }>) => {
-      const { name, email } = action.payload
+    logIn: (
+      state,
+      action: PayloadAction<{ name: string; email?: string; user_id?: string }>
+    ) => {
+      const { name, email, user_id } = action.payload
       state.auth0User = {
         name,
         email,
+        user_id,
         role:
-          email === 'lodarandrea@hotmail.com' ||
-          email === 'balazs.orso@theitsolutions.io'
+          user_id === 'auth0|63bebd81717172a34118351d' ||
+          user_id === 'auth0|63b29e7413e9c360c2b4e429'
             ? Role.Instructor
             : Role.Customer,
       }
@@ -33,7 +38,6 @@ export const userSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { logIn } = userSlice.actions
 
 export default userSlice.reducer
