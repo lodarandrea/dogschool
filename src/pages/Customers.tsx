@@ -32,7 +32,7 @@ function Customers() {
                 title={customer.name}
                 subTitleLabel={'Dog name:'}
                 description={customer.dogName}
-                imgSrc={`${process.env.REACT_APP_API_URL}/customers/1/picture`}
+                imgSrc={`${process.env.REACT_APP_API_URL}/customers/${customer.id}/picture`}
               />
             </Link>
           </div>

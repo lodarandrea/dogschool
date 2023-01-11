@@ -61,7 +61,7 @@ function Instructors() {
           <div role="listitem" key={instructor.id} className="contentItems">
             <Link to={`/instructors/${instructor.id}`}>
               <Card
-                imgSrc={`${process.env.REACT_APP_API_URL}/instructors/1/picture`}
+                imgSrc={`${process.env.REACT_APP_API_URL}/instructors/${instructor.id}/picture`}
                 title={instructor.name}
                 subTitleLabel={'Role:'}
                 description={instructor.trainingTypeName}
