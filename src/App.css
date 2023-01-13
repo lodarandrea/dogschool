@@ -9,4 +9,8 @@ div.contentItems > a {
   @apply block px-8 py-8;
 }
 
+.inactiveLink {
+  @apply pointer-events-none;
+}
+
 @tailwind utilities;

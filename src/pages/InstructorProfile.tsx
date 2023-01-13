@@ -5,9 +5,9 @@ import { useParams } from 'react-router'
 function InstructorProfile() {
   const { instructorId } = useParams()
   return (
-    <div className="mx-8 my-3">
+    <div className=" mx-8 my-3">
       <img
-        className="max-w-xs bg-gray-300 p-10 m-auto"
+        className="w-56 bg-gray-300 p-10 m-auto"
         src={icon}
         alt="instructor"
       />

@@ -4,7 +4,7 @@ import '../App.css'
 function Dashboard() {
   return (
     <div>
-      <div className="contentItems ">
+      <div className="contentItems">
         <Link to={'/customers'}>Customers</Link>
       </div>
       <div className="contentItems">

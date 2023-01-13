@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div className="flex justify-center mb-2 font-semibold text-xs text-center shadow-inner">
       <Link
-        to="/dashboard"
+        to="/"
         className="mt-2 px-5 active:translate-y-1 transform transition"
       >
         <HomeIcon className="w-12 h-12 p-2 m-auto" />

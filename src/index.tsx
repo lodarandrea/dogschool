@@ -14,7 +14,7 @@ root.render(
     <Auth0Provider
       domain={`${process.env.REACT_APP_AUTH0_DOMAIN_URL}`}
       clientId={`${process.env.REACT_APP_AUTH0_CLIENTID}`}
-      redirectUri={'http://localhost:3000/successfullogin'}
+      redirectUri={window.location.origin}
     >
       <Provider store={store}>
         <BrowserRouter>
