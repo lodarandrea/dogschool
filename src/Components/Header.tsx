@@ -17,7 +17,9 @@ function Header() {
       <Link
         to="/"
         className={
-          !isAuthenticated || role === Role.Customer ? 'inactiveLink' : ''
+          !isAuthenticated || role === Role.Customer
+            ? 'pointer-events-none'
+            : ''
         }
       >
         <img src={logo} className="h-10" alt="logo" />
