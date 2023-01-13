@@ -12,7 +12,7 @@ function Dashboard() {
         <Link to={'/instructors'}>Instructors</Link>
       </div>
       <div className="contentItems">
-        <Link to={'/profile'}> Profile</Link>
+        <Link to={`instructors/:instructorId`}> Profile</Link>
       </div>
       <ChangeUserButton />
     </div>

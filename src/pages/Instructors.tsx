@@ -1,27 +1,43 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../Components/Card'
+import { myFetch } from '../Services/FetchService'
 import SearchBar from '../Components/SearchBar'
-import { instructorRoles, instructorsList } from '../model/Instructors'
-import icon from '../img/icon.png'
+import { Instructor, TrainingType } from '../model/Instructors'
 
 function Instructors() {
-  const [filteredInstructorsList, setFilteredInstructorsList] =
-    useState(instructorsList)
+  const [instructorsList, setInstructorsList] = useState<Array<Instructor>>([])
   const [search, setSearch] = useState('')
   const [value, setValue] = useState('')
+  const [instructorTrainingTypes, setInstructorTrainingTypes] = useState<
+    Array<TrainingType>
+  >([])
 
   useEffect(() => {
-    return setFilteredInstructorsList(
-      instructorsList.filter((instructor) => {
-        return (
-          (instructor.name.toLowerCase().includes(search.toLowerCase()) ||
-            instructor.role.toLowerCase().includes(search.toLowerCase())) &&
-          instructor.role.includes(value)
-        )
-      })
+    myFetch('/training-types', setInstructorTrainingTypes)
+  }, [])
+
+  useEffect(() => {
+    myFetch('/instructors', (data: Array<Instructor>) => {
+      let instructors = data.map((i) => ({
+        ...i,
+        trainingTypeName:
+          instructorTrainingTypes.find(({ id, name }) => id === i.trainingType)
+            ?.name ?? i.trainingType.toString(),
+      }))
+      setInstructorsList(instructors)
+    })
+  }, [instructorTrainingTypes])
+
+  const handleFilter = instructorsList.filter((instructor) => {
+    return (
+      (instructor.name.toLowerCase().includes(search.toLowerCase()) ||
+        instructor.trainingTypeName
+          .toLowerCase()
+          .includes(search.toLowerCase())) &&
+      (value ? instructor.trainingType.toString() === value : true)
     )
-  }, [search, value])
+  })
 
   return (
     <div data-testid="instList">
@@ -33,22 +49,22 @@ function Instructors() {
           onChange={(e) => setValue(e.target.value)}
         >
           <option value="">Roles</option>
-          {instructorRoles.map((role) => (
-            <option key={role} value={role}>
-              {role}
+          {instructorTrainingTypes.map((trainingType) => (
+            <option key={trainingType.id} value={trainingType.id}>
+              {trainingType.name}
             </option>
           ))}
         </select>
       </div>
       <div>
-        {filteredInstructorsList.map((instructor) => (
+        {handleFilter.map((instructor) => (
           <div role="listitem" key={instructor.id} className="contentItems">
             <Link to={`/instructors/${instructor.id}`}>
               <Card
-                imgSrc={icon}
+                imgSrc={`${process.env.REACT_APP_API_URL}/instructors/${instructor.id}/picture`}
                 title={instructor.name}
                 subTitleLabel={'Role:'}
-                description={instructor.role}
+                description={instructor.trainingTypeName}
               ></Card>
             </Link>
           </div>
