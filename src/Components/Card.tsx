@@ -1,7 +1,7 @@
 interface CardProps {
   title: string
   subTitleLabel: 'Role:' | 'Dog name:'
-  description: string
+  description: string | number
   imgSrc: string
 }
 
@@ -11,7 +11,7 @@ function Card({ title, subTitleLabel, description, imgSrc }: CardProps) {
       <img
         src={imgSrc}
         alt="Instructor"
-        className="bg-slate-50 w-20 p-3 rounded-full row-span-2"
+        className="bg-slate-50 w-20 p-1 rounded-full row-span-2"
       />
       <h2 className="col-span-2 text-left text-xl font-bold">Name: {title}</h2>
       <h3 className="col-span-2 text-left text-lg font-semibold">

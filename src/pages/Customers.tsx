@@ -1,26 +1,25 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
 import SearchBar from '../Components/SearchBar'
-import { customersList } from '../model/Customer'
 import { useEffect, useState } from 'react'
 import Card from '../Components/Card'
-import dog from '../img/dog.png'
+import { myFetch } from '../Services/FetchService'
+import { Customer } from '../model/Customers'
 
 function Customers() {
-  const [filteredCustomersList, setFilteredCustomersList] =
-    useState(customersList)
+  const [customersList, setCustomersList] = useState<Array<Customer>>([])
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    setFilteredCustomersList(
-      customersList.filter((customer) => {
-        return (
-          customer.name.toLowerCase().includes(search.toLowerCase()) ||
-          customer.dog.toLowerCase().includes(search.toLowerCase())
-        )
-      })
+    myFetch('/customers', setCustomersList)
+  }, [])
+
+  const handleFilter = customersList.filter((customer) => {
+    return (
+      customer.name.toLowerCase().includes(search.toLowerCase()) ||
+      customer.dogName.toLowerCase().includes(search.toLowerCase())
     )
-  }, [search])
+  })
 
   return (
     <div>
@@ -28,14 +27,14 @@ function Customers() {
         <SearchBar setSearch={setSearch} />
       </div>
       <div>
-        {filteredCustomersList.map((customer) => (
-          <div className="contentItems">
+        {handleFilter.map((customer) => (
+          <div className="contentItems" key={customer.id}>
             <Link to={`/customers/${customer.id}`}>
               <Card
                 title={customer.name}
                 subTitleLabel={'Dog name:'}
-                description={customer.dog}
-                imgSrc={dog}
+                description={customer.dogName}
+                imgSrc={`${process.env.REACT_APP_API_URL}/customers/${customer.id}/picture`}
               />
             </Link>
           </div>
