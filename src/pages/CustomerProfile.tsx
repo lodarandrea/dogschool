@@ -14,14 +14,20 @@ function CustomerProfile() {
   const role = useAppSelector((state) => state.user.auth0User?.role)
 
   useEffect(() => {
-    myFetch(`/customers/${customerId}`, setCustomer)
-  }, [customerId])
+    role === Role.Instructor
+      ? myFetch(`/customers/${customerId}`, setCustomer)
+      : myFetch(`/customers/1`, setCustomer)
+  }, [customerId, role])
 
   return customer ? (
     <div className="mx-8 my-3">
       <img
         className="w-56 bg-gray-300 p-1 m-auto"
-        src={`${process.env.REACT_APP_API_URL}/customers/${customerId}/picture`}
+        src={
+          role === Role.Instructor
+            ? `${process.env.REACT_APP_API_URL}/customers/${customerId}/picture`
+            : `${process.env.REACT_APP_API_URL}/customers/1/picture`
+        }
         alt="customer"
       />
       <h1 className="p-8 text-xl text-center">{customer.name}</h1>
