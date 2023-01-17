@@ -1,9 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import CustomerProfile from '../pages/CustomerProfile'
 import Dashboard from '../pages/Dashboard'
-import LogIn from '../pages/Login'
 import { useAppDispatch, useAppSelector } from '../Store/Hooks'
 import { logIn, Role } from '../Store/UserSlice'
+import LoginButton from './Buttons/LoginButton'
 
 function Home() {
   const role = useAppSelector((state) => state.user.auth0User?.role)
@@ -21,7 +21,11 @@ function Home() {
   }
 
   if (!isAuthenticated) {
-    return <LogIn />
+    return <LoginButton />
+  } else {
+    if (isLoading) {
+      return <p>Loading...</p>
+    }
   }
 
   switch (role) {
