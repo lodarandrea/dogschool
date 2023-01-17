@@ -8,7 +8,7 @@ function ReadQRCodeButton() {
     paused: camera,
     onResult(result) {
       console.log(result)
-      fetch(`${process.env.REACT_APP_API_URL}/customers/{id}/attend`, {
+      fetch(`${process.env.REACT_APP_API_URL}/customers/1/attend`, {
         method: 'PUT',
       })
         .then((response) => response.json())

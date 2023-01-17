@@ -12,6 +12,7 @@ function CustomerProfile() {
   const [customer, setCustomer] = useState<Customer | undefined>()
   const { customerId } = useParams()
   const role = useAppSelector((state) => state.user.auth0User?.role)
+  const [qr, setQr] = useState('')
 
   useEffect(() => {
     role === Role.Instructor
@@ -37,7 +38,22 @@ function CustomerProfile() {
           <AttendButton />
         ) : (
           <>
-            <QRCodeButton /> <EditButton />
+            <QRCodeButton setQr={setQr} />
+            <EditButton />
+            {qr ? (
+              <div className="fixed inset-0 bg-slate-700/80 ">
+                <div className="sticky top-11 left-52 bg-white">
+                  <button
+                    type="button"
+                    className="text-lg font-bold"
+                    onClick={() => setQr('')}
+                  >
+                    x
+                  </button>
+                  <img src={`${qr}`} alt="qrCode" />
+                </div>
+              </div>
+            ) : null}
           </>
         )}
       </div>
