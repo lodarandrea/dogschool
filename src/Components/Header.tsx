@@ -35,13 +35,7 @@ function Header() {
             >
               <UserCircleIcon className=" h-9 w-9"></UserCircleIcon>
             </button>
-            <div
-              className={
-                open
-                  ? 'absolute top-12 right-1 m-auto'
-                  : 'absolute top-12 right-1 m-auto hidden'
-              }
-            >
+            <div className={open ? 'absolute top-12 right-1 m-auto' : 'hidden'}>
               <p className="text-xs font-semibold text-black">{user?.email}</p>
               <LogoutButton />
             </div>

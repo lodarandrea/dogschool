@@ -19,13 +19,10 @@ function Home() {
       })
     )
   }
-
-  if (!isAuthenticated) {
+  if (isLoading) {
+    return <p>Loading...</p>
+  } else if (!isAuthenticated) {
     return <LoginButton />
-  } else {
-    if (isLoading) {
-      return <p>Loading...</p>
-    }
   }
 
   switch (role) {
