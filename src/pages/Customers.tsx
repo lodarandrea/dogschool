@@ -23,7 +23,9 @@ function Customers() {
 
   return (
     <div>
-      <SearchBar setSearch={setSearch} />
+      <div className="flex justify-center">
+        <SearchBar setSearch={setSearch} />
+      </div>
       <div>
         {handleFilter.map((customer) => (
           <div className="contentItems" key={customer.id}>

@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
-import ChangeUserButton from '../Components/Buttons/ChangeUserButton'
 
 function Dashboard() {
   return (
     <div>
-      <div className="contentItems ">
+      <div className="contentItems">
         <Link to={'/customers'}>Customers</Link>
       </div>
       <div className="contentItems">
@@ -14,7 +13,6 @@ function Dashboard() {
       <div className="contentItems">
         <Link to={`instructors/:instructorId`}> Profile</Link>
       </div>
-      <ChangeUserButton />
     </div>
   )
 }

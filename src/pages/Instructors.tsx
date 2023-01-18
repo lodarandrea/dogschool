@@ -41,7 +41,7 @@ function Instructors() {
 
   return (
     <div data-testid="instList">
-      <div className="flex justify-center ">
+      <div className="flex justify-center">
         <SearchBar setSearch={setSearch} />
         <select
           className="rounded-full"
