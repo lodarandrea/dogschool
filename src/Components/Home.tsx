@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
+import { useEffect } from 'react'
 import CustomerProfile from '../pages/CustomerProfile'
 import Dashboard from '../pages/Dashboard'
 import { useAppDispatch, useAppSelector } from '../Store/Hooks'
@@ -10,15 +11,18 @@ function Home() {
   const { user, isAuthenticated, isLoading } = useAuth0()
   const dispatcher = useAppDispatch()
 
-  if (!isLoading && user) {
-    dispatcher(
-      logIn({
-        name: user.nickname || user.email || 'John Doe',
-        email: user.email,
-        user_id: user.sub,
-      })
-    )
-  }
+  useEffect(() => {
+    if (!isLoading && user) {
+      dispatcher(
+        logIn({
+          name: user.nickname || user.email || 'John Doe',
+          email: user.email,
+          user_id: user.sub,
+        })
+      )
+    }
+  }, [dispatcher, isLoading, user])
+
   if (isLoading) {
     return <p>Loading...</p>
   } else if (!isAuthenticated) {
