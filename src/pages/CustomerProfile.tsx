@@ -42,7 +42,7 @@ function CustomerProfile() {
             <EditButton />
             {qr ? (
               <div className="fixed inset-0 bg-slate-700/80 ">
-                <div className="sticky top-11 left-52 bg-white">
+                <div className="bg-white flex flex-col justify-center w-56 text-center">
                   <button
                     type="button"
                     className="text-lg font-bold"
