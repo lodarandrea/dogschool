@@ -12,7 +12,7 @@ function Dashboard() {
         <Link to={'/instructors'}>Instructors</Link>
       </div>
       <div className="contentItems">
-        <Link to={`instructors/:instructorId`}> Profile</Link>
+        <Link to={`instructors/1`}> Profile</Link>
       </div>
       <div className="contentItems">
         <ReadQRCodeButton />

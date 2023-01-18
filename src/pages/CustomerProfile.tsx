@@ -41,8 +41,8 @@ function CustomerProfile() {
             <QRCodeButton setQr={setQr} />
             <EditButton />
             {qr ? (
-              <div className="fixed inset-0 bg-slate-700/80 ">
-                <div className="bg-white flex flex-col justify-center w-56 text-center">
+              <div className="flex justify-center items-center fixed inset-0 bg-slate-700/80 ">
+                <div className="bg-white">
                   <button
                     type="button"
                     className="text-lg font-bold"
@@ -50,7 +50,7 @@ function CustomerProfile() {
                   >
                     x
                   </button>
-                  <img src={`${qr}`} alt="qrCode" />
+                  <img src={`${qr}`} alt="qrCode" className="m-auto" />
                 </div>
               </div>
             ) : null}
