@@ -20,20 +20,16 @@ function Dashboard() {
   })
   useEffect(() => {
     if (qrResult) {
-      toast.promise(
-        fetch(`${process.env.REACT_APP_API_URL}/customers/1/attend`, {
-          method: 'PUT',
-        })
-          .then((response) => response.json())
-          .then((data) => setMessage(data.message)),
-        {
-          success: message,
-          error: 'Promise rejected 🤯',
-        },
-        {
-          position: toast.POSITION.TOP_CENTER,
-        }
-      )
+      fetch(`${process.env.REACT_APP_API_URL}/customers/1/attend`, {
+        method: 'PUT',
+      })
+        .then((response) => response.json())
+        .then((data) => setMessage(data.message))
+    }
+    if (message) {
+      toast.success(message, {
+        position: toast.POSITION.TOP_CENTER,
+      })
     }
   }, [message, qrResult])
 
