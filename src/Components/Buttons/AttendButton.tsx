@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 function AttendButton() {
   const [message, setMessage] = useState('')
   const { customerId } = useParams()
-  const customId = 'custom-id-yes'
+  const toastId = 'Toast1'
 
   function handleClick() {
     fetch(`${process.env.REACT_APP_API_URL}/customers/${customerId}/attend`, {
@@ -20,7 +20,7 @@ function AttendButton() {
 
   if (message) {
     toast.success(message, {
-      toastId: customId,
+      toastId: toastId,
       position: toast.POSITION.TOP_CENTER,
     })
   }
