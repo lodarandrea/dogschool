@@ -8,12 +8,12 @@ import { Role } from '../Store/UserSlice'
 import { useAppSelector } from '../Store/Hooks'
 
 function Header() {
-  const [display, setDisplay] = useState('none')
+  const [open, setOpen] = useState(false)
   const { user, isAuthenticated } = useAuth0()
   const role = useAppSelector((state) => state.user.auth0User?.role)
 
   return (
-    <div className="flex justify-between my-3 mx-3">
+    <div className="flex justify-between my-3 mx-5">
       <Link
         to="/"
         className={
@@ -30,19 +30,12 @@ function Header() {
           <div className="flex flex-col mx-1 py-3 px-10 relative">
             <button
               onClick={() => {
-                if (display === 'none') {
-                  setDisplay('block')
-                } else {
-                  setDisplay('none')
-                }
+                setOpen(!open)
               }}
             >
               <UserCircleIcon className=" h-9 w-9"></UserCircleIcon>
             </button>
-            <div
-              style={{ display: display }}
-              className="absolute top-12 right-1 m-auto  "
-            >
+            <div className={open ? 'absolute top-12 right-1 m-auto' : 'hidden'}>
               <p className="text-xs font-semibold text-black">{user?.email}</p>
               <LogoutButton />
             </div>
