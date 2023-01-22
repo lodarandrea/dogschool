@@ -127,11 +127,11 @@ function EditCustomerProfile() {
   return (
     <div>
       <form
-        className="flex flex-col justify-center items-center text-black"
+        className="flex flex-col justify-center items-center text-black my-2"
         onSubmit={handleSubmit}
       >
-        <div>
-          <label>Name:</label>
+        <div className="editPageItems">
+          <label className="p-2">Name:</label>
           <input
             type="text"
             name="name"
@@ -139,12 +139,14 @@ function EditCustomerProfile() {
             onChange={handleChange}
             onBlur={validateName}
             required
+            className=" text-white bg-slate-500"
           />
           <div>{validationMessage.Name || null}</div>
         </div>
-        <div>
-          <label>Email:</label>
+        <div className="editPageItems">
+          <label className="p-2">Email:</label>
           <input
+            className=" text-white bg-slate-500"
             type="email"
             name="email"
             value={formData.email}
@@ -154,9 +156,10 @@ function EditCustomerProfile() {
           />
           <div>{validationMessage.Email || null}</div>
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="editPageItems">
+          <label className="p-2">Password:</label>
           <input
+            className=" text-white bg-slate-500"
             type="password"
             name="password"
             value={formData.password}
@@ -166,24 +169,26 @@ function EditCustomerProfile() {
           />
           <div>{validationMessage.Password || null}</div>
         </div>
-        <div>
-          <label>Password again:</label>
+        <div className="editPageItems">
+          <label className="p-2">Password again:</label>
           <input
             type="password"
             name="passwordAgain"
+            className=" text-white bg-slate-500"
             value={formData.passwordAgain}
             onChange={handleChange}
             onBlur={validatePassAgain}
           />
           <div>{validationMessage.PasswordAgain || null}</div>
         </div>
-        <div>
-          <label>Gender:</label>
+        <div className="editPageItems">
+          <label className="p-2">Gender:</label>
           <div>
             <input
               type="radio"
               name="gender"
               value="Male"
+              className="mx-2"
               onChange={handleChange}
             />
             Male
@@ -191,6 +196,7 @@ function EditCustomerProfile() {
               type="radio"
               name="gender"
               value="Female"
+              className="mx-2"
               onChange={handleChange}
             />
             Female
@@ -198,25 +204,27 @@ function EditCustomerProfile() {
               type="radio"
               name="gender"
               value="Other"
+              className="mx-2"
               onChange={handleChange}
             />
             Other
           </div>
           <div>{validationMessage.Gender || null}</div>
         </div>
-        <div>
+        <div className="editPageItems">
           <label>
             <input
               type="checkbox"
               name="subs"
+              className="mx-5"
               checked={formData.subs}
               onChange={handleCheckbox}
             />
             Subscribe to newsletter
           </label>
         </div>
-        <div>
-          <label>Location:</label>
+        <div className="text-xl m-2">
+          <label className="p-2">Location:</label>
           <select name="location" onChange={handleChange}>
             <option value={[]}></option>
             {locations.map((l) => (
@@ -229,7 +237,7 @@ function EditCustomerProfile() {
         <button
           type="submit"
           onClick={validateGender}
-          className="block m-auto text-lg font-semibold rounded-lg border-2 bg-slate-500 text-white active:translate-y-1 transform transition px-5 py-3"
+          className="block m-auto mt-3 text-lg font-semibold rounded-lg border-2 bg-slate-500 text-white active:translate-y-1 transform transition px-5 py-3"
         >
           Submit
         </button>
