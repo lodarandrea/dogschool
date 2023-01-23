@@ -7,11 +7,14 @@ import { Role } from '../Store/UserSlice'
 import QRCodeButton from '../Components/Buttons/QRCodeButton'
 import EditButton from '../Components/Buttons/EditButton'
 import { myFetch } from '../Services/FetchService'
+import AddCreditButton from '../Components/Buttons/AddCreditButton'
+import AddCredit from '../Components/AddCredit'
 
 function CustomerProfile() {
   const [customer, setCustomer] = useState<Customer | undefined>()
   const { customerId } = useParams()
   const role = useAppSelector((state) => state.user.auth0User?.role)
+  const [popUp, setPopUp] = useState(false)
 
   useEffect(() => {
     role === Role.Instructor
@@ -38,6 +41,8 @@ function CustomerProfile() {
         ) : (
           <>
             <QRCodeButton /> <EditButton />
+            <AddCreditButton setPopUp={setPopUp} />
+            {popUp ? <AddCredit setPopUp={setPopUp} /> : null}
           </>
         )}
       </div>

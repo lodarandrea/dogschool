@@ -1,22 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+interface Credit {
+  value: number
+}
+
 export const creditSlice = createSlice({
   name: 'credit',
 
   initialState: {
-    credit: 0,
-  },
+    value: 0,
+  } as Credit,
   reducers: {
     Increment10: (state) => {
-      state.credit += 10
+      state.value += 10
     },
 
     Increment25: (state) => {
-      state.credit += 25
+      state.value += 25
     },
 
     Increment50: (state) => {
-      state.credit += 50
+      state.value += 50
     },
   },
 })
