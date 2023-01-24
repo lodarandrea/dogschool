@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface Credit {
   value: number
@@ -11,20 +11,12 @@ export const creditSlice = createSlice({
     value: 0,
   } as Credit,
   reducers: {
-    Increment10: (state) => {
-      state.value += 10
-    },
-
-    Increment25: (state) => {
-      state.value += 25
-    },
-
-    Increment50: (state) => {
-      state.value += 50
+    Increment: (state, action: PayloadAction<number>) => {
+      state.value += action.payload
     },
   },
 })
 
-export const { Increment10, Increment25, Increment50 } = creditSlice.actions
+export const { Increment } = creditSlice.actions
 
 export default creditSlice.reducer
