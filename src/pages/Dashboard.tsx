@@ -1,37 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useZxing } from 'react-zxing'
 import '../App.css'
 import ReadQRCodeButton from '../Components/Buttons/ReadQRCodeButton'
+import QRReader from '../Components/QRReader'
+import { myFetch } from '../Services/FetchService'
 
 function Dashboard() {
   const [message, setMessage] = useState('')
   const [camera, setCamera] = useState(false)
-  const [qrResult, setQrResult]: any = useState(null)
-  const { ref } = useZxing({
-    paused: !camera,
-    onResult(result) {
-      console.log(result)
-      setQrResult(result.getText())
-      setCamera(false)
-    },
-  })
-  useEffect(() => {
-    if (qrResult) {
-      fetch(`${process.env.REACT_APP_API_URL}/customers/1/attend`, {
-        method: 'PUT',
-      })
-        .then((response) => response.json())
-        .then((data) => setMessage(data.message))
-    }
-    if (message) {
-      toast.success(message, {
-        position: toast.POSITION.TOP_CENTER,
-      })
-    }
-  }, [message, qrResult])
+
+  function handleQrCode(qrResult: string) {
+    myFetch(
+      `/customers/1/attend`,
+      (data) => {
+        setMessage(data.message)
+        toast.success(data.message, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      },
+      { method: 'PUT' }
+    )
+  }
 
   return (
     <div>
@@ -49,9 +40,7 @@ function Dashboard() {
       </div>
       <div>
         {camera ? (
-          <div className="flex justify-center items-center fixed inset-0 bg-slate-700/80 ">
-            <video ref={ref} className="max-w-md" />
-          </div>
+          <QRReader setCamera={setCamera} setQrResult={handleQrCode} />
         ) : null}
       </div>
     </div>
