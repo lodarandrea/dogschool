@@ -14,6 +14,7 @@ function CustomerProfile() {
   const [customer, setCustomer] = useState<Customer | undefined>()
   const { customerId } = useParams()
   const role = useAppSelector((state) => state.user.auth0User?.role)
+  const [qr, setQr] = useState('')
   const [popUp, setPopUp] = useState(false)
   const credit = useAppSelector((state) => state.credit.value)
 
@@ -45,10 +46,25 @@ function CustomerProfile() {
               <h1 className="text-lg text-center">Credit: {credit}</h1>
             </div>
             <div className="flex justify-center m-5">
-              <QRCodeButton /> <EditButton />
+              <QRCodeButton setQr={setQr} />
+              <EditButton />
               <AddCreditButton setPopUp={setPopUp} />
             </div>
             {popUp ? <AddCredit setPopUp={setPopUp} /> : null}
+            {qr ? (
+              <div className="flex justify-center items-center fixed inset-0 bg-slate-700/80 ">
+                <div className="bg-white">
+                  <button
+                    type="button"
+                    className="text-lg font-bold"
+                    onClick={() => setQr('')}
+                  >
+                    x
+                  </button>
+                  <img src={`${qr}`} alt="qrCode" className="m-auto" />
+                </div>
+              </div>
+            ) : null}
           </>
         )}
       </div>
