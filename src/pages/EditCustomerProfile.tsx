@@ -34,7 +34,6 @@ function EditCustomerProfile() {
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
-    console.log(formData)
   }
 
   const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -97,11 +96,11 @@ function EditCustomerProfile() {
             required
             className=" text-white bg-slate-500"
           />
-          {validationMessage ? (
+          {validationMessage && (
             <div className="text-red-800 font-normal text-base">
               {validationMessage.get('Name')}
             </div>
-          ) : null}
+          )}
         </div>
         <div className="editPageItems">
           <label className="p-2" htmlFor="email">
@@ -115,11 +114,11 @@ function EditCustomerProfile() {
             onChange={handleChange}
             required
           />
-          {validationMessage ? (
+          {validationMessage && (
             <div className="text-red-800 font-normal text-base">
               {validationMessage.get('Email')}
             </div>
-          ) : null}
+          )}
         </div>
         <div className="editPageItems">
           <label className="p-2" htmlFor="password">
@@ -133,11 +132,11 @@ function EditCustomerProfile() {
             onChange={handleChange}
             required
           />
-          {validationMessage ? (
+          {validationMessage && (
             <div className="text-red-800 font-normal text-base">
               {validationMessage.get('Password')}
             </div>
-          ) : null}
+          )}
         </div>
         <div className="editPageItems">
           <label className="p-2" htmlFor="passwordAgain">
@@ -150,11 +149,11 @@ function EditCustomerProfile() {
             value={formData.passwordAgain}
             onChange={handleChange}
           />
-          {validationMessage ? (
+          {validationMessage && (
             <div className="text-red-800 font-normal text-base">
               {validationMessage.get('PasswordAgain')}
             </div>
-          ) : null}
+          )}
         </div>
         <div className="editPageItems">
           <label className="p-2" htmlFor="gender">
@@ -186,11 +185,11 @@ function EditCustomerProfile() {
             />
             Other
           </div>
-          {validationMessage ? (
+          {validationMessage && (
             <div className="text-red-800 font-normal text-base">
               {validationMessage.get('Gender')}
             </div>
-          ) : null}
+          )}
         </div>
         <div className="editPageItems">
           <label htmlFor="subs">
