@@ -9,4 +9,8 @@ div.contentItems > a {
   @apply block px-8 py-8;
 }
 
+.editPageItems {
+  @apply my-2 flex flex-col max-w-sm items-center text-xl;
+}
+
 @tailwind utilities;
