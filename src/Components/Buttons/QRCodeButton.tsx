@@ -1,9 +1,13 @@
 import { myFetch } from '../../Services/FetchService'
 
-function QRCodeButton(props: { setQr: (value: string) => void }) {
+function QRCodeButton(props: {
+  setQr: (value: string) => void
+  setShowQr: (value: boolean) => void
+}) {
   function generateQR() {
     myFetch(`/customers/1/qr-code`, (data: { qrCode: string }) => {
       props.setQr(data.qrCode)
+      props.setShowQr(true)
     })
   }
 
