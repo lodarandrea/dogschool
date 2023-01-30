@@ -9,12 +9,14 @@ import EditButton from '../Components/Buttons/EditButton'
 import { myFetch } from '../Services/FetchService'
 import AddCreditButton from '../Components/Buttons/AddCreditButton'
 import AddCredit from '../Components/AddCredit'
+import ShowQrCode from '../Components/ShowQrCode'
 
 function CustomerProfile() {
   const [customer, setCustomer] = useState<Customer | undefined>()
   const { customerId } = useParams()
   const role = useAppSelector((state) => state.user.auth0User?.role)
   const [qr, setQr] = useState('')
+  const [showQr, setShowQR] = useState(false)
   const [popUp, setPopUp] = useState(false)
   const credit = useAppSelector((state) => state.credit.value)
 
@@ -46,25 +48,12 @@ function CustomerProfile() {
               <h1 className="text-lg text-center">Credit: {credit}</h1>
             </div>
             <div className="flex justify-center m-5">
-              <QRCodeButton setQr={setQr} />
+              <QRCodeButton setQr={setQr} setShowQr={setShowQR} />
               <EditButton />
               <AddCreditButton setPopUp={setPopUp} />
             </div>
             {popUp ? <AddCredit setPopUp={setPopUp} /> : null}
-            {qr ? (
-              <div className="flex justify-center items-center fixed inset-0 bg-slate-700/80 ">
-                <div className="bg-white">
-                  <button
-                    type="button"
-                    className="text-lg font-bold"
-                    onClick={() => setQr('')}
-                  >
-                    x
-                  </button>
-                  <img src={`${qr}`} alt="qrCode" className="m-auto" />
-                </div>
-              </div>
-            ) : null}
+            {showQr ? <ShowQrCode setShowQr={setShowQR} qr={qr} /> : null}
           </>
         )}
       </div>

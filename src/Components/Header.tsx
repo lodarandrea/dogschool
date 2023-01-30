@@ -4,24 +4,14 @@ import { UserCircleIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
 import LogoutButton from './Buttons/LogoutButton'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Role } from '../Store/UserSlice'
-import { useAppSelector } from '../Store/Hooks'
 
 function Header() {
   const [open, setOpen] = useState(false)
   const { user, isAuthenticated } = useAuth0()
-  const role = useAppSelector((state) => state.user.auth0User?.role)
 
   return (
     <div className="flex justify-between my-3 mx-5">
-      <Link
-        to="/"
-        className={
-          !isAuthenticated || role === Role.Customer
-            ? 'pointer-events-none'
-            : ''
-        }
-      >
+      <Link to="/">
         <img src={logo} className="h-10" alt="logo" />
         <h3 className="font-bold">Soma Kutyasuli </h3>
       </Link>
