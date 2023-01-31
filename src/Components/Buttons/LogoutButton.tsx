@@ -8,10 +8,10 @@ const LogoutButton = () => {
   return (
     <button
       onClick={() => logout({ returnTo: window.location.origin })}
-      className="text-md font-semibold text-black active:translate-y-1 transform transition py-1"
+      className="text-md font-semibold active:translate-y-1 transform transition m-1"
     >
       Log Out
-      <ArrowRightOnRectangleIcon className="h-5 w-5 inline" />
+      <ArrowRightOnRectangleIcon className="h-5 w-5 inline mx-1" />
     </button>
   )
 }

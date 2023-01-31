@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {
   HomeIcon,
   UserGroupIcon,
@@ -7,28 +6,33 @@ import {
 } from '@heroicons/react/24/outline'
 
 function Footer() {
+  const location = useLocation()
+  const isIndex = location.pathname === '/'
+  const isCustomers = location.pathname === '/customers'
+  const isInstructors = location.pathname === '/instructors'
+
   return (
-    <div className="flex justify-center mb-2 font-semibold text-xs text-center shadow-inner">
-      <Link
-        to="/"
-        className="mt-2 px-5 active:translate-y-1 transform transition"
-      >
-        <HomeIcon className="w-12 h-12 p-2 m-auto" />
-        Home
+    <div className="flex justify-center mb-2 font-semibold shadow-inner">
+      <Link to="/" className="footerLink">
+        <HomeIcon
+          className={`footerIcon ${
+            isIndex ? 'border-b-4 border-turquoise-800' : ''
+          }`}
+        />
       </Link>
-      <Link
-        to="/customers"
-        className="mt-2 px-5 active:translate-y-1 transform transition"
-      >
-        <UserGroupIcon className="w-12 h-12 p-2 m-auto" />
-        Customers
+      <Link to="/customers" className="footerLink">
+        <UserGroupIcon
+          className={`footerIcon ${
+            isCustomers ? 'border-b-4 border-turquoise-800' : ''
+          }`}
+        />
       </Link>
-      <Link
-        to="/instructors"
-        className="mt-2 px-5 active:translate-y-1 transform transition"
-      >
-        <AcademicCapIcon className="w-12 h-12 p-2 m-auto" />
-        Instructors
+      <Link to="/instructors" className="footerLink">
+        <AcademicCapIcon
+          className={`footerIcon ${
+            isInstructors ? 'border-b-4 border-turquoise-800' : ''
+          }`}
+        />
       </Link>
     </div>
   )
