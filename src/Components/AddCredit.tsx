@@ -7,31 +7,29 @@ function AddCredit(props: { setPopUp: (value: boolean) => void }) {
   const dispatcher = useAppDispatch()
 
   return (
-    <div className="flex justify-center items-center fixed inset-0 bg-slate-700/80 ">
+    <div className="flex justify-center items-center fixed inset-0 bg-neutral-800/80 ">
       <div className="bg-white">
         <div className="float-right m-3">
           <button onClick={() => props.setPopUp(false)} className="float-right">
             <XCircleIcon className="w-6" />
           </button>
-          <div className="text-lg font-medium mt-5 text-center">
-            Credit: {credit}
-          </div>
+          <div className="text font-medium">Credit: {credit}</div>
           <div className="my-5">
             <button
               onClick={() => dispatcher(Increment(10))}
-              className=" text-lg font-semibold rounded-lg border-2 bg-slate-500 text-white active:translate-y-1 transform transition px-5 py-3"
+              className="buttons mx-2"
             >
               Add 10 credit
             </button>
             <button
               onClick={() => dispatcher(Increment(25))}
-              className=" text-lg font-semibold rounded-lg border-2 bg-slate-500 text-white active:translate-y-1 transform transition px-5 py-3"
+              className="buttons mx-2"
             >
               Add 25 credit
             </button>
             <button
               onClick={() => dispatcher(Increment(50))}
-              className="text-lg font-semibold rounded-lg border-2 bg-slate-500 text-white active:translate-y-1 transform transition px-5 py-3"
+              className="buttons mx-2"
             >
               Add 50 credit
             </button>

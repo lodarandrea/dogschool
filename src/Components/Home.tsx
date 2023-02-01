@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard'
 import { useAppDispatch, useAppSelector } from '../Store/Hooks'
 import { logIn, Role } from '../Store/UserSlice'
 import LoginButton from './Buttons/LoginButton'
+import bgPaw from '../img/bgPaw.png'
 
 function Home() {
   const role = useAppSelector((state) => state.user.auth0User?.role)
@@ -26,7 +27,19 @@ function Home() {
   if (isLoading) {
     return <p>Loading...</p>
   } else if (!isAuthenticated) {
-    return <LoginButton />
+    return (
+      <div
+        className="flex flex-grow"
+        style={{
+          backgroundImage: `url(${bgPaw})`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+        }}
+      >
+        <LoginButton />
+      </div>
+    )
   }
 
   switch (role) {
