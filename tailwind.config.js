@@ -28,6 +28,11 @@ module.exports = {
           900: '#331311',
         },
       },
+      transitionDelay: {
+        20: '20ms',
+        30: '30ms',
+        40: '40ms',
+      },
     },
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],
