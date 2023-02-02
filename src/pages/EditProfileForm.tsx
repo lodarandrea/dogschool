@@ -39,6 +39,7 @@ function EditProfileForm() {
           </label>
           <input
             type="text"
+            id="name"
             {...register('name', {
               required: 'Name is required!',
               minLength: {
@@ -52,9 +53,11 @@ function EditProfileForm() {
             })}
             className=" text-white bg-slate-500"
           />
-          <p className="text-red-800 font-normal text-base">
-            {errors.name?.message}
-          </p>
+          {errors.name && (
+            <p className="text-red-800 font-normal text-base">
+              {errors.name.message}
+            </p>
+          )}
         </div>
         <div className="editPageItems">
           <label className="p-2" htmlFor="email">
@@ -63,6 +66,7 @@ function EditProfileForm() {
           <input
             className=" text-white bg-slate-500"
             type="email"
+            id="email"
             {...register('email', {
               required: 'E-mail address is required!',
               minLength: {
@@ -79,9 +83,11 @@ function EditProfileForm() {
               },
             })}
           />
-          <p className="text-red-800 font-normal text-base">
-            {errors.email?.message}
-          </p>
+          {errors.email && (
+            <p className="text-red-800 font-normal text-base">
+              {errors.email.message}
+            </p>
+          )}
         </div>
         <div className="editPageItems">
           <label className="p-2" htmlFor="password">
@@ -90,6 +96,7 @@ function EditProfileForm() {
           <input
             className=" text-white bg-slate-500"
             type="password"
+            id="password"
             {...register('password', {
               required: 'Password is required!',
               minLength: {
@@ -102,9 +109,11 @@ function EditProfileForm() {
               },
             })}
           />
-          <p className="text-red-800 font-normal text-base">
-            {errors.password?.message}
-          </p>
+          {errors.password && (
+            <p className="text-red-800 font-normal text-base">
+              {errors.password.message}
+            </p>
+          )}
         </div>
         <div className="editPageItems">
           <label className="p-2" htmlFor="passwordAgain">
@@ -113,6 +122,7 @@ function EditProfileForm() {
           <input
             type="password"
             className=" text-white bg-slate-500"
+            id="passwordAgain"
             {...register('passwordAgain', {
               validate: (passwordAgain, formValues) => {
                 if (passwordAgain !== formValues.password) {
@@ -121,37 +131,43 @@ function EditProfileForm() {
               },
             })}
           />
-          <p className="text-red-800 font-normal text-base">
-            {errors.passwordAgain?.message}
-          </p>
+          {errors.passwordAgain && (
+            <p className="text-red-800 font-normal text-base">
+              {errors.passwordAgain.message}
+            </p>
+          )}
         </div>
         <div className="editPageItems">
-          <label className="p-2" htmlFor="gender">
-            Gender:
-          </label>
+          <label className="p-2">Gender:</label>
           <div>
             {gender.map((g) => (
               <>
                 <input
                   type="radio"
+                  id={g}
                   value={g}
                   key={g}
                   className="mx-2"
                   {...register('gender', { required: 'Gender is required!' })}
                 />
-                {g}
+                <label htmlFor={g}> {g}</label>
               </>
             ))}
           </div>
-          <p className="text-red-800 font-normal text-base">
-            {errors.gender?.message}
-          </p>
+          {errors.gender && (
+            <p className="text-red-800 font-normal text-base">
+              {errors.gender.message}
+            </p>
+          )}
         </div>
-        <div className="editPageItems">
-          <label htmlFor="subs">
-            <input type="checkbox" className="mx-5" {...register('subs')} />
-            Subscribe to newsletter
-          </label>
+        <div className="editPageItems flex flex-row items-baseline">
+          <input
+            type="checkbox"
+            id="subs"
+            className="mx-5"
+            {...register('subs')}
+          />
+          <label htmlFor="subs">Subscribe to newsletter</label>
         </div>
         <div className="text-xl m-2">
           <label className="p-2" htmlFor="location">
@@ -160,7 +176,7 @@ function EditProfileForm() {
           <select {...register('location')}>
             <option value={[]}></option>
             {locations.map((l) => (
-              <option value={l} key={l}>
+              <option value={l} key={l} id="location">
                 {l}
               </option>
             ))}
