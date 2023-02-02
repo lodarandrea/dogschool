@@ -29,7 +29,7 @@ function Home() {
   } else if (!isAuthenticated) {
     return (
       <div
-        className="flex flex-grow"
+        className="flex flex-1 flex-col"
         style={{
           backgroundImage: `url(${bgPaw})`,
           backgroundSize: 'contain',
@@ -37,6 +37,10 @@ function Home() {
           backgroundPosition: 'center',
         }}
       >
+        <h1 className="text-5xl font-black mt-10 m-auto tracking-wider leading-normal">
+          WELCOME <br />
+          BACK!
+        </h1>
         <LoginButton />
       </div>
     )

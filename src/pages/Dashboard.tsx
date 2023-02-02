@@ -8,14 +8,7 @@ function Dashboard() {
   const [camera, setCamera] = useState(false)
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${bgPaw})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom',
-      }}
-    >
+    <div>
       <div className="buttons text-2xl mb-5">
         <Link to={'/customers'}>Customers</Link>
       </div>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import paw from '../img/paw.png'
-import { UserCircleIcon } from '@heroicons/react/20/solid'
+import { UserCircleIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import LogoutButton from './Buttons/LogoutButton'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -15,7 +15,7 @@ function Header() {
         <img src={paw} className="h-8 m-2" alt="logo" />
         <h3 className="font-semibold">
           Soma <br />
-          Kutyasuli
+          Dog Training
         </h3>
       </Link>
       <div>
