@@ -25,6 +25,7 @@ function EditProfileForm() {
     'Austria',
     'Canada',
   ]
+  const gender: string[] = ['Male', 'Female', 'Other']
 
   return (
     <div>
@@ -129,27 +130,18 @@ function EditProfileForm() {
             Gender:
           </label>
           <div>
-            <input
-              type="radio"
-              value="Male"
-              className="mx-2"
-              {...register('gender', { required: 'Gender is required!' })}
-            />
-            Male
-            <input
-              type="radio"
-              {...register('gender', { required: 'Gender is required!' })}
-              value="Female"
-              className="mx-2"
-            />
-            Female
-            <input
-              type="radio"
-              {...register('gender', { required: 'Gender is required!' })}
-              value="Other"
-              className="mx-2"
-            />
-            Other
+            {gender.map((g) => (
+              <>
+                <input
+                  type="radio"
+                  value={g}
+                  key={g}
+                  className="mx-2"
+                  {...register('gender', { required: 'Gender is required!' })}
+                />
+                {g}
+              </>
+            ))}
           </div>
           <p className="text-red-800 font-normal text-base">
             {errors.gender?.message}
