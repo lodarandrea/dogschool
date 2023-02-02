@@ -29,15 +29,15 @@ function Home() {
   } else if (!isAuthenticated) {
     return (
       <div
-        className="flex flex-1 flex-col"
+        className="flex flex-col items-center"
         style={{
           backgroundImage: `url(${bgPaw})`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
+          backgroundPosition: 'bottom',
         }}
       >
-        <h1 className="text-5xl font-black mt-10 m-auto tracking-wider leading-normal">
+        <h1 className="text-5xl font-black mt-10 mb-20 tracking-wider leading-normal">
           WELCOME <br />
           BACK!
         </h1>
