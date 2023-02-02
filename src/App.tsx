@@ -6,7 +6,7 @@ import InstructorProfile from './pages/InstructorProfile'
 import MainLayout from './Components/Layouts/MainLayout'
 import CustomerProfile from './pages/CustomerProfile'
 import Home from './Components/Home'
-import EditCustomerProfile from './pages/EditCustomerProfile'
+import EditProfileForm from './pages/EditProfileForm'
 
 function App(): JSX.Element {
   return (
@@ -20,7 +20,7 @@ function App(): JSX.Element {
           path="instructors/:instructorId"
           element={<InstructorProfile />}
         />
-        <Route path="/edit" element={<EditCustomerProfile />} />
+        <Route path="/edit" element={<EditProfileForm />} />
       </Route>
     </Routes>
   )
