@@ -32,7 +32,7 @@ function Header() {
             <div
               className={
                 open
-                  ? 'absolute top-14 right-1 m-auto z-10 bg-turquoise-100 shadow-lg px-3 border-turquoise-200 border-2 rounded-lg'
+                  ? 'absolute top-14 right-1 m-auto z-50 bg-turquoise-100 shadow-lg px-3 border-turquoise-200 border-2 rounded-lg'
                   : 'hidden'
               }
             >

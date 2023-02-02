@@ -1,11 +1,10 @@
 interface CardProps {
   title: string
-  subTitleLabel: 'Role:' | 'Dog name:'
   description: string | number
   imgSrc: string
 }
 
-function Card({ title, subTitleLabel, description, imgSrc }: CardProps) {
+function Card({ title, description, imgSrc }: CardProps) {
   return (
     <div className="flex mx-2 px-2 py-2 items-center justify-start hover:bg-turquoise-400/10 hover:rounded-3xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105">
       <div className="group relative px-3 py-1 inline-flex justify-center items-center antialiased overflow-hidden active:top-0.5 focus:outline-none">
@@ -21,7 +20,7 @@ function Card({ title, subTitleLabel, description, imgSrc }: CardProps) {
       <div className="mx-5">
         <h2 className="text-left text-lg font-semibold">{title}</h2>
         <h3 className="text-left text-sm font-medium text-neutral-500">
-          {subTitleLabel} {description}
+          {description}
         </h3>
       </div>
     </div>
