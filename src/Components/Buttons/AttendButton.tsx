@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import '../../App.css'
 import { myFetch } from '../../Services/FetchService'
 
 function AttendButton() {

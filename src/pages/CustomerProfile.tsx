@@ -37,8 +37,10 @@ function CustomerProfile() {
         }
         alt="customer"
       />
-      <h1 className="text font-semibold">{customer.name}</h1>
-      <h2 className="text">{customer.description}</h2>
+      <h1 className="text-3xl text-center mt-8 p-2 font-semibold">
+        {customer.name}
+      </h1>
+      <h2 className="text text-neutral-500">{customer.description}</h2>
       <div>
         {role === Role.Instructor ? (
           <AttendButton />

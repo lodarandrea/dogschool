@@ -4,10 +4,6 @@
 @tailwind components;
 
 @layer utilities {
-  /* .translate-3d-14 {
-    transform: translate3d(0, 8px, 0);
-    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
-  } */
   .translate-3d-14S {
     transform: translate3d(0, 4px, 0);
     transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
@@ -54,11 +50,15 @@
 }
 
 .buttonsIcon {
-  @apply inline-flex rounded-lg w-6 ml-3;
+  @apply inline-flex w-6 ml-3;
 }
 
 div.buttons > a {
   @apply block px-1 py-5;
+}
+
+.dashboardIcon {
+  @apply inline-flex mr-9 w-8;
 }
 
 .text {
@@ -83,6 +83,10 @@ div.buttons > a {
 
 body {
   @apply font-poppins text-neutral-900;
+}
+
+.successtoast {
+  @apply bg-turquoise-500;
 }
 
 @tailwind utilities;
