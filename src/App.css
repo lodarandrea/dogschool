@@ -70,7 +70,7 @@ div.buttons > a {
 }
 
 .editPageItems {
-  @apply my-3 flex flex-col w-9/12 text-xl accent-turquoise-700;
+  @apply my-3 flex flex-col w-9/12 text-lg accent-turquoise-700;
 }
 
 .editPageItems > input {
@@ -78,7 +78,7 @@ div.buttons > a {
 }
 
 .errorsMessage {
-  @apply text-red-800 font-medium text-base;
+  @apply text-sunset-600 font-medium text-base;
 }
 
 body {

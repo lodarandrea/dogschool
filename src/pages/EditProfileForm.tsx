@@ -1,4 +1,6 @@
-import { useForm } from 'react-hook-form'
+import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 interface FormData {
   name: string
@@ -27,11 +29,26 @@ function EditProfileForm() {
   ]
   const gender: string[] = ['Male', 'Female', 'Other']
 
+  const navigate = useNavigate()
+
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    console.log(data)
+    navigate('/')
+    toast.success('Changes Saved!', {
+      position: toast.POSITION.TOP_CENTER,
+    })
+  }
+  const onError: SubmitErrorHandler<FormData> = (errors) => {
+    toast.error('Please correct the form!', {
+      position: toast.POSITION.TOP_CENTER,
+    })
+  }
+
   return (
     <div>
       <form
         className="flex flex-col justify-center items-center text-black my-2"
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={handleSubmit(onSubmit, onError)}
       >
         <div className="editPageItems">
           <label htmlFor="name">Name:</label>
@@ -138,7 +155,7 @@ function EditProfileForm() {
             <p className="errorsMessage">{errors.gender.message}</p>
           )}
         </div>
-        <div className="text-xl flex flex-row items-baseline accent-turquoise-700 my-3">
+        <div className="text-lg flex flex-row items-baseline accent-turquoise-700 my-3">
           <input
             type="checkbox"
             id="subs"
@@ -147,7 +164,7 @@ function EditProfileForm() {
           />
           <label htmlFor="subs">Subscribe to newsletter</label>
         </div>
-        <div className="text-xl flex flex-row items-baseline accent-turquoise-700 my-3">
+        <div className="text-lg flex flex-row items-baseline accent-turquoise-700 my-3">
           <label className="p-2" htmlFor="location">
             Location:
           </label>
