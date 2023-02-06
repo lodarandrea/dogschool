@@ -13,21 +13,22 @@ function Dashboard() {
 
   return (
     <div>
-      <div className="buttons text-2xl mb-5">
-        <Link to={'/customers'}>
-          <UserGroupIcon className=" dashboardIcon" />
-          Customers
+      <div className="buttons text-2xl mb-5 w-2/3">
+        <Link to={'/customers'} className="relative mb-5">
+          <UserGroupIcon className=" dashboardIcon absolute left-5 top-4" />
+          <p className="absolute left-28 top-4">Customers</p>
         </Link>
       </div>
-      <div className="buttons text-2xl mb-5">
-        <Link to={'/instructors'}>
-          <AcademicCapIcon className=" dashboardIcon" />
-          Instructors
+      <div className="buttons text-2xl mb-5 w-2/3">
+        <Link to={'/instructors'} className="relative mb-5">
+          <AcademicCapIcon className=" dashboardIcon absolute left-5 top-4" />
+          <p className="absolute left-28 top-4">Instructors</p>
         </Link>
       </div>
-      <div className="buttons text-2xl mb-5">
-        <Link to={`instructors/1`}>
-          <UsersIcon className=" dashboardIcon" /> Profile
+      <div className="buttons text-2xl mb-5 w-2/3">
+        <Link to={`instructors/1`} className="relative mb-5">
+          <UsersIcon className=" dashboardIcon absolute left-5 top-4" />
+          <p className="absolute left-28 top-4">Profile</p>
         </Link>
       </div>
       <div className=" justify-center items-end">

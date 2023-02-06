@@ -180,7 +180,7 @@ function EditProfileForm() {
             ))}
           </select>
         </div>
-        <button type="submit" className="buttons mt-3">
+        <button type="submit" className="buttons mt-3 text-xl">
           Submit
         </button>
       </form>

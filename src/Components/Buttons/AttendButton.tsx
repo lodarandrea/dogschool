@@ -24,11 +24,7 @@ function AttendButton() {
   }
 
   return (
-    <button
-      type="button"
-      className="block mt-8 text-lg buttons"
-      onClick={handleClick}
-    >
+    <button type="button" className="block mt-8 buttons" onClick={handleClick}>
       Attend
     </button>
   )

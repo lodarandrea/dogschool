@@ -5,7 +5,7 @@ function EditButton() {
   return (
     <>
       <Link to={'/edit'}>
-        <button type="button" className="block mt-8 text-lg buttons">
+        <button type="button" className="block mt-8 buttons">
           Edit
           <PencilSquareIcon className="buttonsIcon" />
         </button>

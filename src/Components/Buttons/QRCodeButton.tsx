@@ -13,11 +13,7 @@ function QRCodeButton(props: {
   }
 
   return (
-    <button
-      type="button"
-      className="block mt-8 text-lg buttons"
-      onClick={generateQR}
-    >
+    <button type="button" className="block mt-8 buttons" onClick={generateQR}>
       QR code
       <QrCodeIcon className="buttonsIcon" />
     </button>

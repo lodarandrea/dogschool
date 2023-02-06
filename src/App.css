@@ -46,7 +46,7 @@
 }
 
 .buttons {
-  @apply px-5 py-3 text-white font-semibold max-w-sm mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
+  @apply w-1/2 text-xl p-5 text-white font-semibold  mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
 }
 
 .buttonsIcon {
@@ -58,7 +58,7 @@ div.buttons > a {
 }
 
 .dashboardIcon {
-  @apply inline-flex mr-9 w-8;
+  @apply inline-flex w-8;
 }
 
 .text {
@@ -90,3 +90,8 @@ body {
 }
 
 @tailwind utilities;
+
+:root {
+  --toastify-color-success: #5fc9cf !important;
+  --toastify-color-error: #ff6158 !important;
+}
