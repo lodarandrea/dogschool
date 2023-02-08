@@ -4,10 +4,6 @@
 @tailwind components;
 
 @layer utilities {
-  .translate-3d-14S {
-    transform: translate3d(0, 4px, 0);
-    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
-  }
   .transition-after-14 {
     transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s,
       right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s,
@@ -37,6 +33,10 @@
   }
 }
 
+.qrAnimation {
+  @apply absolute bg-gradient-to-br from-turquoise-500 to-turquoise-700;
+}
+
 .footerLink {
   @apply mt-2 px-5 active:translate-y-1 transform transition;
 }
@@ -46,19 +46,23 @@
 }
 
 .buttons {
-  @apply w-1/2 text-xl p-5 text-white font-semibold  mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
+  @apply w-1/2 p-5 text-xl text-white font-semibold  mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
 }
 
 .buttonsIcon {
   @apply inline-flex w-6 ml-3;
 }
 
-div.buttons > a {
-  @apply block px-1 py-5;
+a > p {
+  @apply absolute left-36 top-6;
+}
+
+.dashboardLink {
+  @apply block h-1/6 text-2xl mb-5 w-2/3 relative;
 }
 
 .dashboardIcon {
-  @apply inline-flex w-8;
+  @apply inline-flex w-8 absolute left-12 top-6;
 }
 
 .text {

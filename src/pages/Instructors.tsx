@@ -58,7 +58,7 @@ function Instructors() {
           ))}
         </select>
       </div>
-      <div className="">
+      <div>
         {handleFilter.map((instructor) => (
           <div role="listitem" key={instructor.id}>
             <Link to={`/instructors/${instructor.id}`}>

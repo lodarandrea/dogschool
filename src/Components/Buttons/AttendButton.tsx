@@ -1,11 +1,8 @@
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import '../../App.css'
 import { myFetch } from '../../Services/FetchService'
 
 function AttendButton() {
-  const [message, setMessage] = useState('')
   const { customerId } = useParams()
   const toastId = 'Toast1'
 
@@ -13,7 +10,6 @@ function AttendButton() {
     myFetch(
       `/customers/${customerId}/attend`,
       (data) => {
-        setMessage(data.message)
         toast.success(data.message, {
           toastId,
           position: toast.POSITION.TOP_CENTER,
