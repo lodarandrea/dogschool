@@ -41,14 +41,16 @@ function Instructors() {
 
   return (
     <div data-testid="instList">
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-8 mx-8">
         <SearchBar setSearch={setSearch} />
         <select
-          className="rounded-full"
+          className="ml-2 w-32 z-10 inline-flex items-center py-2.5 px-2 text-sm font-medium  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
           name="role"
           onChange={(e) => setValue(e.target.value)}
         >
-          <option value="">Roles</option>
+          <option value="" className="text-center">
+            Roles
+          </option>
           {instructorTrainingTypes.map((trainingType) => (
             <option key={trainingType.id} value={trainingType.id}>
               {trainingType.name}
@@ -58,12 +60,11 @@ function Instructors() {
       </div>
       <div>
         {handleFilter.map((instructor) => (
-          <div role="listitem" key={instructor.id} className="contentItems">
+          <div role="listitem" key={instructor.id}>
             <Link to={`/instructors/${instructor.id}`}>
               <Card
                 imgSrc={`${process.env.REACT_APP_API_URL}/instructors/${instructor.id}/picture`}
                 title={instructor.name}
-                subTitleLabel={'Role:'}
                 description={instructor.trainingTypeName}
               ></Card>
             </Link>

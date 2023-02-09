@@ -1,32 +1,33 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { useEffect } from 'react'
 import CustomerProfile from '../pages/CustomerProfile'
 import Dashboard from '../pages/Dashboard'
-import { useAppDispatch, useAppSelector } from '../Store/Hooks'
-import { logIn, Role } from '../Store/UserSlice'
+import { useAppSelector } from '../Store/Hooks'
+import { Role } from '../Store/UserSlice'
 import LoginButton from './Buttons/LoginButton'
+import bgPaw from '../img/bgPaw.png'
 
 function Home() {
   const role = useAppSelector((state) => state.user.auth0User?.role)
-  const { user, isAuthenticated, isLoading } = useAuth0()
-  const dispatcher = useAppDispatch()
+  const { isAuthenticated } = useAuth0()
 
-  useEffect(() => {
-    if (!isLoading && user) {
-      dispatcher(
-        logIn({
-          name: user.nickname || user.email || 'John Doe',
-          email: user.email,
-          user_id: user.sub,
-        })
-      )
-    }
-  }, [dispatcher, isLoading, user])
-
-  if (isLoading) {
-    return <p>Loading...</p>
-  } else if (!isAuthenticated) {
-    return <LoginButton />
+  if (!isAuthenticated) {
+    return (
+      <div
+        className="flex flex-col items-center"
+        style={{
+          backgroundImage: `url(${bgPaw})`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'bottom',
+        }}
+      >
+        <h1 className="text-5xl font-black mt-10 mb-20 tracking-wider leading-normal">
+          WELCOME <br />
+          BACK!
+        </h1>
+        <LoginButton />
+      </div>
+    )
   }
 
   switch (role) {

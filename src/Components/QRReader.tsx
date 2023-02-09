@@ -31,7 +31,7 @@ function QRReader(props: { setCamera: (value: boolean) => void }) {
   }
 
   return (
-    <div className="flex justify-center items-center fixed inset-0 bg-slate-700/80 ">
+    <div className="flex justify-center items-center fixed inset-0 bg-neutral-800/80 ">
       <video ref={ref} className="max-w-md" />
     </div>
   )

@@ -29,7 +29,7 @@ function CustomerProfile() {
   return customer ? (
     <div className="mx-8 my-3">
       <img
-        className="w-40 bg-gray-300 p-1 m-auto"
+        className="profileImg"
         src={
           role === Role.Instructor
             ? `${process.env.REACT_APP_API_URL}/customers/${customerId}/picture`
@@ -37,20 +37,22 @@ function CustomerProfile() {
         }
         alt="customer"
       />
-      <h1 className="p-2 text-xl text-center">{customer.name}</h1>
-      <h2 className="p-2 text-lg text-center">{customer.description}</h2>
+      <h1 className="text-3xl text-center mt-8 p-2 font-semibold">
+        {customer.name}
+      </h1>
+      <h2 className="text text-neutral-500">{customer.description}</h2>
       <div>
         {role === Role.Instructor ? (
           <AttendButton />
         ) : (
           <>
             <div>
-              <h1 className="text-lg text-center">Credit: {credit}</h1>
+              <h1 className="text font-semibold">Credit: {credit}</h1>
             </div>
-            <div className="flex justify-center m-5">
+            <div className="flex flex-col justify-center m-5">
+              <AddCreditButton setPopUp={setPopUp} />
               <QRCodeButton setQr={setQr} setShowQr={setShowQR} />
               <EditButton />
-              <AddCreditButton setPopUp={setPopUp} />
             </div>
             {popUp ? <AddCredit setPopUp={setPopUp} /> : null}
             {showQr ? <ShowQrCode setShowQr={setShowQR} qr={qr} /> : null}

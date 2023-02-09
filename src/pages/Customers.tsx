@@ -23,7 +23,7 @@ function Customers() {
 
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mx-16 mb-8">
         <SearchBar setSearch={setSearch} />
       </div>
       <div>
@@ -32,7 +32,6 @@ function Customers() {
             <Link to={`/customers/${customer.id}`}>
               <Card
                 title={customer.name}
-                subTitleLabel={'Dog name:'}
                 description={customer.dogName}
                 imgSrc={`${process.env.REACT_APP_API_URL}/customers/${customer.id}/picture`}
               />

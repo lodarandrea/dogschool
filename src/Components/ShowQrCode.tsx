@@ -1,3 +1,4 @@
+import { XCircleIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
 function ShowQrCode(props: {
@@ -5,16 +6,16 @@ function ShowQrCode(props: {
   qr: string
 }) {
   return (
-    <div className="flex justify-center items-center fixed inset-0 bg-slate-700/80 ">
+    <div className="flex justify-center items-center fixed inset-0 bg-neutral-800/80 ">
       <div className="bg-white">
         <button
           type="button"
-          className="text-lg font-bold"
           onClick={() => props.setShowQr(false)}
+          className="float-right m-1"
         >
-          x
+          <XCircleIcon className="w-6" />
         </button>
-        <img src={`${props.qr}`} alt="qrCode" className="m-auto" />
+        <img src={`${props.qr}`} alt="qrCode" className="mt-5" />
       </div>
     </div>
   )

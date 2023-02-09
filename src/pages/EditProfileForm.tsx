@@ -1,4 +1,6 @@
-import { useForm } from 'react-hook-form'
+import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 interface FormData {
   name: string
@@ -27,16 +29,29 @@ function EditProfileForm() {
   ]
   const gender: string[] = ['Male', 'Female', 'Other']
 
+  const navigate = useNavigate()
+
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    console.log(data)
+    navigate('/')
+    toast.success('Changes Saved!', {
+      position: toast.POSITION.TOP_CENTER,
+    })
+  }
+  const onError: SubmitErrorHandler<FormData> = (errors) => {
+    toast.error('Please correct the form!', {
+      position: toast.POSITION.TOP_CENTER,
+    })
+  }
+
   return (
     <div>
       <form
         className="flex flex-col justify-center items-center text-black my-2"
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={handleSubmit(onSubmit, onError)}
       >
         <div className="editPageItems">
-          <label className="p-2" htmlFor="name">
-            Name:
-          </label>
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
             id="name"
@@ -51,20 +66,14 @@ function EditProfileForm() {
                 message: 'The Name should be maximum 16 character!',
               },
             })}
-            className=" text-white bg-slate-500"
           />
           {errors.name && (
-            <p className="text-red-800 font-normal text-base">
-              {errors.name.message}
-            </p>
+            <p className="errorsMessage">{errors.name.message}</p>
           )}
         </div>
         <div className="editPageItems">
-          <label className="p-2" htmlFor="email">
-            Email:
-          </label>
+          <label htmlFor="email">Email:</label>
           <input
-            className=" text-white bg-slate-500"
             type="email"
             id="email"
             {...register('email', {
@@ -84,17 +93,12 @@ function EditProfileForm() {
             })}
           />
           {errors.email && (
-            <p className="text-red-800 font-normal text-base">
-              {errors.email.message}
-            </p>
+            <p className="errorsMessage">{errors.email.message}</p>
           )}
         </div>
         <div className="editPageItems">
-          <label className="p-2" htmlFor="password">
-            Password:
-          </label>
+          <label htmlFor="password">Password:</label>
           <input
-            className=" text-white bg-slate-500"
             type="password"
             id="password"
             {...register('password', {
@@ -110,18 +114,13 @@ function EditProfileForm() {
             })}
           />
           {errors.password && (
-            <p className="text-red-800 font-normal text-base">
-              {errors.password.message}
-            </p>
+            <p className="errorsMessage">{errors.password.message}</p>
           )}
         </div>
         <div className="editPageItems">
-          <label className="p-2" htmlFor="passwordAgain">
-            Enter Password again:
-          </label>
+          <label htmlFor="passwordAgain">Enter Password again:</label>
           <input
             type="password"
-            className=" text-white bg-slate-500"
             id="passwordAgain"
             {...register('passwordAgain', {
               validate: (passwordAgain, formValues) => {
@@ -132,48 +131,47 @@ function EditProfileForm() {
             })}
           />
           {errors.passwordAgain && (
-            <p className="text-red-800 font-normal text-base">
-              {errors.passwordAgain.message}
-            </p>
+            <p className="errorsMessage">{errors.passwordAgain.message}</p>
           )}
         </div>
         <div className="editPageItems">
-          <label className="p-2">Gender:</label>
-          <div>
+          <label>Gender:</label>
+          <div className="flex justify-center">
             {gender.map((g) => (
-              <>
+              <div className="mx-3">
                 <input
                   type="radio"
                   id={g}
                   value={g}
                   key={g}
-                  className="mx-2"
+                  className="mx-1"
                   {...register('gender', { required: 'Gender is required!' })}
                 />
                 <label htmlFor={g}> {g}</label>
-              </>
+              </div>
             ))}
           </div>
           {errors.gender && (
-            <p className="text-red-800 font-normal text-base">
-              {errors.gender.message}
-            </p>
+            <p className="errorsMessage">{errors.gender.message}</p>
           )}
         </div>
-        <div className="editPageItems flex flex-row items-baseline">
+        <div className="text-lg flex flex-row items-baseline accent-turquoise-700 my-3">
           <input
             type="checkbox"
             id="subs"
-            className="mx-5"
             {...register('subs')}
+            className="mr-2"
           />
           <label htmlFor="subs">Subscribe to newsletter</label>
         </div>
-        <div className="text-xl m-2">
+        <div className="text-lg flex flex-row items-baseline accent-turquoise-700 my-3">
           <label className="p-2" htmlFor="location">
             Location:
           </label>
-          <select {...register('location')}>
+          <select
+            {...register('location')}
+            className="ml-2 z-10 inline-flex items-center py-2 px-2 text-sm font-medium  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
+          >
             <option value={[]}></option>
             {locations.map((l) => (
               <option value={l} key={l} id="location">
@@ -182,10 +180,7 @@ function EditProfileForm() {
             ))}
           </select>
         </div>
-        <button
-          type="submit"
-          className="block m-auto mt-3 text-lg font-semibold rounded-lg border-2 bg-slate-500 text-white active:translate-y-1 transform transition px-5 py-3"
-        >
+        <button type="submit" className="buttons mt-3 text-xl">
           Submit
         </button>
       </form>

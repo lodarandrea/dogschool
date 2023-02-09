@@ -1,14 +1,13 @@
+import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 
 function EditButton() {
   return (
     <>
       <Link to={'/edit'}>
-        <button
-          type="button"
-          className="block m-auto text-lg font-semibold rounded-lg border-2 bg-slate-500 text-white active:translate-y-1 transform transition px-5 py-3"
-        >
+        <button type="button" className="block mt-8 buttons">
           Edit
+          <PencilSquareIcon className="buttonsIcon" />
         </button>
       </Link>
     </>
