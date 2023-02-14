@@ -38,31 +38,31 @@
 }
 
 .footerLink {
-  @apply mt-2 px-5 active:translate-y-1 transform transition;
+  @apply mt-2 px-5 md:flex md:items-center md:my-3 md:px-2 active:translate-y-1 transform transition;
 }
 
 .footerIcon {
-  @apply w-11 h-12 p-2;
+  @apply w-11 h-12 p-2 md:py-0 md:w-10 md:h-auto;
 }
 
 .buttons {
-  @apply w-1/2 p-5 text-xl text-white font-semibold  mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
+  @apply w-1/2 p-5 text-lg text-white font-semibold  mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
 }
 
 .buttonsIcon {
-  @apply inline-flex w-6 ml-3;
+  @apply inline-flex w-4 sm:w-6 md:w-8;
 }
 
-a > p {
-  @apply absolute left-36 top-6;
+.dashboardLinkText {
+  @apply col-end-5 col-span-2 md:text-xl md:mt-5 lg:text-2xl;
 }
 
 .dashboardLink {
-  @apply block h-1/6 text-2xl mb-5 w-2/3 relative;
+  @apply grid grid-cols-5 mb-5 w-4/5 md:flex md:flex-col md:h-3/4 md:w-1/4 md:justify-center lg:h-1/2;
 }
 
 .dashboardIcon {
-  @apply inline-flex w-8 absolute left-12 top-6;
+  @apply w-6 sm:w-8 md:w-10 col-span-2 mx-auto lg:w-12;
 }
 
 .text {

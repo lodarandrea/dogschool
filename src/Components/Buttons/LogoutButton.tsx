@@ -7,7 +7,7 @@ const LogoutButton = () => {
   return (
     <button
       onClick={() => logout({ returnTo: window.location.origin })}
-      className="text-md font-semibold active:translate-y-1 transform transition m-1"
+      className="text-xs lg:text-base font-semibold active:translate-y-1 transform transition m-1"
     >
       Log Out
       <ArrowRightOnRectangleIcon className="buttonsIcon my-1" />

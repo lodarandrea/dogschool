@@ -13,7 +13,7 @@ function Home() {
   if (!isAuthenticated) {
     return (
       <div
-        className="flex flex-col items-center"
+        className="flex flex-col items-center lg:mt-20 lg:mx-auto lg:px-40 lg:py-20 lg:max-w-2xl"
         style={{
           backgroundImage: `url(${bgPaw})`,
           backgroundSize: 'contain',
@@ -21,7 +21,7 @@ function Home() {
           backgroundPosition: 'bottom',
         }}
       >
-        <h1 className="text-5xl font-black mt-10 mb-20 tracking-wider leading-normal">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-black mb-20 tracking-wider leading-normal lg:mx-64 ">
           WELCOME <br />
           BACK!
         </h1>
