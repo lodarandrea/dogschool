@@ -10,7 +10,7 @@ const LogoutButton = () => {
       className="text-xs lg:text-base font-semibold active:translate-y-1 transform transition m-1"
     >
       Log Out
-      <ArrowRightOnRectangleIcon className="buttonsIcon my-1" />
+      <ArrowRightOnRectangleIcon className="inline-flex w-6 my-1 mx-2" />
     </button>
   )
 }

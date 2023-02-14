@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom'
 function EditButton() {
   return (
     <>
-      <Link to={'/edit'}>
-        <button type="button" className="block mt-8 buttons">
-          Edit
-          <PencilSquareIcon className="buttonsIcon" />
-        </button>
+      <Link to={'/edit'} className="buttons profileButtons ">
+        <p className="profileButtonsText">Edit</p>
+        <PencilSquareIcon className="buttonsIcon" />
       </Link>
     </>
   )

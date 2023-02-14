@@ -27,7 +27,11 @@ function CustomerProfile() {
   }, [customerId, role])
 
   return customer ? (
-    <div className="mx-8 my-3">
+    <div
+      className={`mx-8 my-3 flex flex-col flex-1 lg:mx-auto ${
+        role === Role.Instructor ? `md:ml-36` : null
+      }`}
+    >
       <img
         className="profileImg"
         src={
@@ -37,7 +41,7 @@ function CustomerProfile() {
         }
         alt="customer"
       />
-      <h1 className="text-3xl text-center mt-8 p-2 font-semibold">
+      <h1 className="text-xl lg:text-2xl text-center mt-1 p-2 font-semibold">
         {customer.name}
       </h1>
       <h2 className="text text-neutral-500">{customer.description}</h2>
@@ -49,7 +53,7 @@ function CustomerProfile() {
             <div>
               <h1 className="text font-semibold">Credit: {credit}</h1>
             </div>
-            <div className="flex flex-col justify-center m-5">
+            <div className="flex flex-col justify-center mx-5 md:flex-row lg:justify-end">
               <AddCreditButton setPopUp={setPopUp} />
               <QRCodeButton setQr={setQr} setShowQr={setShowQR} />
               <EditButton />

@@ -22,7 +22,7 @@ function Dashboard() {
         </p>
       </div>
       <div className="flex flex-col flex-1 justify-center items-center md:mt-10 md:items-stretch">
-        <div className="md:flex md:flex-row md:flex-1 md:ml-36 lg:ml-0">
+        <div className="md:flex md:flex-row md:flex-1 md:ml-36">
           <Link to={'/customers'} className="buttons dashboardLink ">
             <UserGroupIcon className=" dashboardIcon  " />
             <p className="dashboardLinkText">Customers</p>

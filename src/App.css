@@ -46,11 +46,11 @@
 }
 
 .buttons {
-  @apply w-1/2 p-5 text-lg text-white font-semibold  mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
+  @apply w-48 p-5 text-base md:text-lg lg:mx-3 text-white font-semibold  mx-auto text-center rounded-xl shadow-lg shadow-neutral-400 bg-turquoise-600  hover:bg-sunset-500  active:translate-y-1 transform transition;
 }
 
 .buttonsIcon {
-  @apply inline-flex w-4 sm:w-6 md:w-8;
+  @apply m-auto w-6 md:w-7 ml-2;
 }
 
 .dashboardLinkText {
@@ -65,16 +65,24 @@
   @apply w-6 sm:w-8 md:w-10 col-span-2 mx-auto lg:w-12;
 }
 
+.profileButtons {
+  @apply mt-5 grid grid-cols-4 items-center;
+}
+
+.profileButtonsText {
+  @apply col-span-3 text-center text-base;
+}
+
 .text {
-  @apply mt-5 p-2 text-xl text-center;
+  @apply mt-5 p-2 text-base lg:text-xl text-center;
 }
 
 .profileImg {
-  @apply w-52 h-52 rounded-full p-1 m-auto shadow-inner object-cover object-top;
+  @apply w-36 h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 rounded-full p-1 mx-auto my-2 md:my-5 shadow-inner object-cover object-top;
 }
 
 .editPageItems {
-  @apply my-3 flex flex-col w-9/12 text-lg accent-turquoise-700;
+  @apply my-3 flex flex-col w-9/12 text-base lg:text-lg accent-turquoise-700;
 }
 
 .editPageItems > input {
@@ -82,7 +90,7 @@
 }
 
 .errorsMessage {
-  @apply text-sunset-600 font-medium text-base;
+  @apply text-sunset-600 font-medium text-xs lg:text-base;
 }
 
 body {

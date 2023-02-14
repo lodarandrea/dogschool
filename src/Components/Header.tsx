@@ -5,10 +5,13 @@ import { useState } from 'react'
 import LogoutButton from './Buttons/LogoutButton'
 import { useAuth0 } from '@auth0/auth0-react'
 import { menu } from '../model/Menu'
+import { useAppSelector } from '../Store/Hooks'
+import { Role } from '../Store/UserSlice'
 
 function Header() {
   const [open, setOpen] = useState(false)
   const { user, isAuthenticated } = useAuth0()
+  const role = useAppSelector((state) => state.user.auth0User?.role)
 
   return (
     <>
@@ -21,18 +24,21 @@ function Header() {
           </h3>
         </Link>
 
-        <div className="lg:flex">
-          <div className="hidden lg:flex">
-            {menu.map((menuPoint) => (
-              <Link
-                to={`${menuPoint.url}`}
-                className="hidden lg:block lg:my-auto lg:mx-3 lg:text-lg lg:font-medium"
-              >
-                {menuPoint.name}
-              </Link>
-            ))}
-          </div>
-          {isAuthenticated ? (
+        {isAuthenticated ? (
+          <div className="lg:flex">
+            {role === Role.Instructor ? (
+              <div className="hidden lg:flex">
+                {menu.map((menuPoint) => (
+                  <Link
+                    to={`${menuPoint.url}`}
+                    className="hidden lg:block lg:my-auto lg:mx-3 lg:text-lg lg:font-medium"
+                  >
+                    {menuPoint.name}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+
             <div className="flex flex-col mx-1 py-4 relative">
               <button
                 onClick={() => {
@@ -49,15 +55,15 @@ function Header() {
                     : 'hidden'
                 }
               >
-                <div className="text-xs lg:text-base font-medium border-b-2 border-turquoise-300 py-2">
+                <div className="text-xs font-medium border-b-2 border-turquoise-300 py-2">
                   <p>{user?.nickname}</p>
                   <p>{user?.email}</p>
                 </div>
                 <LogoutButton />
               </div>
             </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
       </div>
     </>
   )
