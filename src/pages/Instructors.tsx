@@ -40,11 +40,11 @@ function Instructors() {
   })
 
   return (
-    <div data-testid="instList">
-      <div className="flex justify-center mb-8 mx-8">
+    <div data-testid="instList" className="tabletGrid">
+      <div className="searchBar">
         <SearchBar setSearch={setSearch} />
         <select
-          className="ml-2 w-32 z-10 inline-flex items-center py-2.5 px-2 text-sm font-medium  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
+          className="ml-2 w-24 z-10 inline-flex items-center py-2.5 px-2 text-sm font-medium  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
           name="role"
           onChange={(e) => setValue(e.target.value)}
         >
@@ -58,7 +58,7 @@ function Instructors() {
           ))}
         </select>
       </div>
-      <div>
+      <div className="md:col-start-2 md:col-span-4 lg:flex lg:flex-wrap lg:mx-10">
         {handleFilter.map((instructor) => (
           <div role="listitem" key={instructor.id}>
             <Link to={`/instructors/${instructor.id}`}>

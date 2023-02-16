@@ -22,13 +22,13 @@ function Customers() {
   })
 
   return (
-    <div>
-      <div className="flex justify-center mx-16 mb-8">
+    <div className="tabletGrid lg:flex lg:flex-col lg:h-full">
+      <div className="searchBar">
         <SearchBar setSearch={setSearch} />
       </div>
-      <div>
+      <div className="md:col-start-2 md:col-span-4 lg:flex lg:flex-wrap lg:mx-10">
         {handleFilter.map((customer) => (
-          <div className="contentItems" key={customer.id}>
+          <div key={customer.id}>
             <Link to={`/customers/${customer.id}`}>
               <Card
                 title={customer.name}

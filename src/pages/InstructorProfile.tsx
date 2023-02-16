@@ -12,7 +12,7 @@ function InstructorProfile() {
   }, [instructorId])
 
   return instructor ? (
-    <div className="mx-8 my-3 flex flex-col flex-1 lg:mx-auto md:ml-36 ">
+    <div className="mx-8 my-3 flex flex-col flex-1 lg:mx-auto md:ml-36">
       <img
         className="profileImg"
         src={`${process.env.REACT_APP_API_URL}/instructors/${instructorId}/picture`}

@@ -31,7 +31,7 @@ function Header() {
                 {menu.map((menuPoint) => (
                   <Link
                     to={`${menuPoint.url}`}
-                    className="hidden lg:block lg:my-auto lg:mx-3 lg:text-lg lg:font-medium"
+                    className="hidden lg:block lg:my-auto lg:mx-3 lg:text-base lg:font-medium"
                   >
                     {menuPoint.name}
                   </Link>

@@ -65,6 +65,14 @@
   @apply w-6 sm:w-8 md:w-10 col-span-2 mx-auto lg:w-12;
 }
 
+.tabletGrid {
+  @apply md:grid md:grid-cols-5 lg:flex lg:flex-col lg:h-full;
+}
+
+.searchBar {
+  @apply flex justify-center mb-8 mt-3 mx-5 max-w-sm md:mx-auto md:w-11/12 md:col-start-2 md:col-span-4 lg:max-w-lg;
+}
+
 .profileButtons {
   @apply mt-5 grid grid-cols-4 items-center;
 }
