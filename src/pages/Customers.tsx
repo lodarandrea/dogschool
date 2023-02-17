@@ -22,11 +22,11 @@ function Customers() {
   })
 
   return (
-    <div className="tabletGrid lg:flex lg:flex-col lg:h-full">
+    <div className="tabletGrid ">
       <div className="searchBar">
         <SearchBar setSearch={setSearch} />
       </div>
-      <div className="md:col-start-2 md:col-span-4 lg:flex lg:flex-wrap lg:mx-10">
+      <div className="lg:grid lg:mx-10 overflow-y-auto">
         {handleFilter.map((customer) => (
           <div key={customer.id}>
             <Link to={`/customers/${customer.id}`}>
