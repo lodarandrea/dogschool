@@ -65,8 +65,16 @@
   @apply w-6 sm:w-8 md:w-10 col-span-2 mx-auto lg:w-12;
 }
 
-.tabletGrid {
+.listContainer {
   @apply lg:flex lg:flex-col lg:h-full;
+}
+
+.cardContainer {
+  @apply lg:flex lg:flex-wrap;
+}
+
+div .cardContainer > div {
+  @apply lg:basis-1/5 lg:mx-5;
 }
 
 .searchBar {

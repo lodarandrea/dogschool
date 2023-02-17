@@ -40,7 +40,7 @@ function Instructors() {
   })
 
   return (
-    <div data-testid="instList" className="tabletGrid">
+    <div data-testid="instList" className="listContainer">
       <div className="searchBar">
         <SearchBar setSearch={setSearch} />
         <select
@@ -58,7 +58,7 @@ function Instructors() {
           ))}
         </select>
       </div>
-      <div className="md:col-start-2 md:col-span-4 lg:flex lg:flex-wrap lg:mx-10">
+      <div className="cardContainer">
         {handleFilter.map((instructor) => (
           <div role="listitem" key={instructor.id}>
             <Link to={`/instructors/${instructor.id}`}>
