@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import '../App.css'
 import SearchBar from '../Components/SearchBar'
 import { useEffect, useState } from 'react'
 import Card from '../Components/Card'
@@ -24,10 +23,12 @@ function Customers() {
 
   return (
     <div className="listContainer">
+      <div className="my-4">
+        <Breadcrumbs />
+      </div>
       <div className="searchBar">
         <SearchBar setSearch={setSearch} />
       </div>
-      <Breadcrumbs />
       <div className="cardContainer">
         {handleFilter.map((customer) => (
           <div key={customer.id}>

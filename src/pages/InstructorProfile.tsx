@@ -14,10 +14,10 @@ function InstructorProfile() {
 
   return instructor ? (
     <>
-      <div>
+      <div className="my-4">
         <Breadcrumbs />
       </div>
-      <div className="mx-8 my-5 flex flex-col flex-1 lg:mx-auto md:ml-36">
+      <div className="mx-8 my-5 flex flex-col lg:mx-auto">
         <img
           className="profileImg"
           src={`${process.env.REACT_APP_API_URL}/instructors/${instructorId}/picture`}

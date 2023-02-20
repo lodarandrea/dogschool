@@ -42,6 +42,9 @@ function Instructors() {
 
   return (
     <div data-testid="instList" className="listContainer">
+      <div className="my-4">
+        <Breadcrumbs />
+      </div>
       <div className="searchBar">
         <SearchBar setSearch={setSearch} />
         <select
@@ -59,7 +62,7 @@ function Instructors() {
           ))}
         </select>
       </div>
-      <Breadcrumbs />
+
       <div className="cardContainer">
         {handleFilter.map((instructor) => (
           <div role="listitem" key={instructor.id}>

@@ -55,6 +55,7 @@ function App(): JSX.Element {
     {
       element: <MainLayout />,
       path: '/',
+      handle: { crumb: () => <Link to="/">Home</Link> },
       children: [
         {
           index: true,

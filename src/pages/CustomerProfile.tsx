@@ -29,8 +29,12 @@ function CustomerProfile() {
 
   return customer ? (
     <>
-      <div>{role === Role.Instructor ? <Breadcrumbs /> : null}</div>
-      <div className="mx-8 my-5 flex flex-col flex-1 lg:mx-auto">
+      {role === Role.Instructor ? (
+        <div className="my-4">
+          <Breadcrumbs />
+        </div>
+      ) : null}
+      <div className="mx-8 my-5 flex flex-col lg:mx-auto">
         <img
           className="profileImg"
           src={

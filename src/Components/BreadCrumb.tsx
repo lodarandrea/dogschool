@@ -12,7 +12,7 @@ function Breadcrumbs() {
       {crumbs.map((crumb, index) => (
         <li key={index} className="mx-1 flex">
           {index > 0 ? (
-            <ChevronRightIcon className="w-3 text-neutral-500 mx-1" />
+            <ChevronRightIcon className="w-4 lg:w-5 text-neutral-500 mx-1" />
           ) : null}
 
           {crumb}

@@ -42,7 +42,7 @@
 }
 
 .footerIcon {
-  @apply w-11 h-12 p-2 mx-3 md:py-0 md:w-10 md:h-auto;
+  @apply w-11 h-12 p-2 mx-3 md:mr-0 md:py-0 md:w-10 md:h-auto;
 }
 
 .buttons {
