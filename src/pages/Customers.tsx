@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Card from '../Components/Card'
 import { myFetch } from '../Services/FetchService'
 import { Customer } from '../model/Customers'
+import Breadcrumbs from '../Components/BreadCrumb'
 
 function Customers() {
   const [customersList, setCustomersList] = useState<Array<Customer>>([])
@@ -26,6 +27,7 @@ function Customers() {
       <div className="searchBar">
         <SearchBar setSearch={setSearch} />
       </div>
+      <Breadcrumbs />
       <div className="cardContainer">
         {handleFilter.map((customer) => (
           <div key={customer.id}>

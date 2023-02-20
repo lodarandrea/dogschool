@@ -4,6 +4,7 @@ import Card from '../Components/Card'
 import { myFetch } from '../Services/FetchService'
 import SearchBar from '../Components/SearchBar'
 import { Instructor, TrainingType } from '../model/Instructors'
+import Breadcrumbs from '../Components/BreadCrumb'
 
 function Instructors() {
   const [instructorsList, setInstructorsList] = useState<Array<Instructor>>([])
@@ -58,6 +59,7 @@ function Instructors() {
           ))}
         </select>
       </div>
+      <Breadcrumbs />
       <div className="cardContainer">
         {handleFilter.map((instructor) => (
           <div role="listitem" key={instructor.id}>

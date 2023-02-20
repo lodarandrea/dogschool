@@ -42,7 +42,7 @@
 }
 
 .footerIcon {
-  @apply w-11 h-12 p-2 md:py-0 md:w-10 md:h-auto;
+  @apply w-11 h-12 p-2 mx-3 md:py-0 md:w-10 md:h-auto;
 }
 
 .buttons {
@@ -82,7 +82,7 @@ div .cardContainer > div {
 }
 
 .profileButtons {
-  @apply mt-5 grid grid-cols-4 items-center;
+  @apply m-5 grid grid-cols-4 items-center;
 }
 
 .profileButtonsText {

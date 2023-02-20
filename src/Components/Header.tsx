@@ -30,6 +30,7 @@ function Header() {
               <div className="hidden lg:flex">
                 {menu.map((menuPoint) => (
                   <Link
+                    key={menuPoint.name}
                     to={`${menuPoint.url}`}
                     className="hidden lg:block lg:my-auto lg:mx-3 lg:text-base lg:font-medium"
                   >

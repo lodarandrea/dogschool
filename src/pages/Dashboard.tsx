@@ -12,8 +12,8 @@ function Dashboard() {
   const [camera, setCamera] = useState(false)
 
   return (
-    <div className="mx-5">
-      <div className=" my-3  lg:mt-5 lg:flex lg:flex-col lg:mx-10">
+    <div className="mx-5 h-screen">
+      <div className=" my-3  lg:mt-5 lg:flex lg:flex-col lg:mx-10 mb-10">
         <h1 className="m-1 text-base lg:text-xl font-semibold  lg:mx-0">
           Welcome to Soma Dog Training!
         </h1>
@@ -36,7 +36,7 @@ function Dashboard() {
             <p className="dashboardLinkText">Profile</p>
           </Link>
         </div>
-        <div className=" justify-center items-end lg:hidden">
+        <div className="flex justify-center items-end lg:hidden">
           <ReadQRCodeButton setCamera={setCamera} />
         </div>
         <div>{camera ? <QRReader setCamera={setCamera} /> : null}</div>

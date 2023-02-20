@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { Link, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Customers from './pages/Customers'
 import Instructors from './pages/Instructors'
 import InstructorProfile from './pages/InstructorProfile'
@@ -29,7 +29,7 @@ function App(): JSX.Element {
 
   if (isLoading) {
     return (
-      <div className="flex items-center m-auto max-w-sm h-screen text-center">
+      <div className="flex items-center justify-center h-screen text-center">
         <svg
           aria-hidden="true"
           className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-turquoise-400"
@@ -51,21 +51,59 @@ function App(): JSX.Element {
     )
   }
 
-  return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
-        <Route path="/customers" element={<Customers />} />
-        <Route path="customers/:customerId" element={<CustomerProfile />} />
-        <Route path="/instructors" element={<Instructors />} />
-        <Route
-          path="instructors/:instructorId"
-          element={<InstructorProfile />}
-        />
-        <Route path="/edit" element={<EditProfileForm />} />
-      </Route>
-    </Routes>
-  )
+  const router = createBrowserRouter([
+    {
+      element: <MainLayout />,
+      path: '/',
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: '/customers',
+          handle: { crumb: () => <Link to="/customers">Customers</Link> },
+          children: [
+            {
+              index: true,
+              element: <Customers />,
+            },
+            {
+              path: '/customers/:customerId',
+              element: <CustomerProfile />,
+              handle: { crumb: () => <span>Customer Profile</span> },
+            },
+          ],
+        },
+
+        {
+          path: '/instructors',
+          handle: {
+            crumb: () => <Link to="/instructors">Instructors</Link>,
+          },
+          children: [
+            {
+              index: true,
+              element: <Instructors />,
+            },
+            {
+              path: '/instructors/:instructorId',
+              element: <InstructorProfile />,
+              handle: { crumb: () => <span>Instructor Profile</span> },
+            },
+          ],
+        },
+
+        {
+          path: '/edit',
+          element: <EditProfileForm />,
+          handle: { crumb: () => <span>Edit</span> },
+        },
+      ],
+    },
+  ])
+
+  return <RouterProvider router={router} />
 }
 
 export default App

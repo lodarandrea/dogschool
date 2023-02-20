@@ -11,12 +11,12 @@ function MainLayout() {
   const { isAuthenticated } = useAuth0()
 
   return (
-    <div className=" bg-white m-auto flex flex-col h-screen overflow-auto border-t-8 border-turquoise-800 relative">
+    <div className=" bg-white flex flex-col h-full overflow-auto border-t-8 border-turquoise-800 relative">
       <Header />
       <div className="flex">
         {!isAuthenticated || role === Role.Customer ? null : <Footer />}
 
-        <div className="w-full">
+        <div className="w-full my-auto h-screen">
           <Outlet />
         </div>
       </div>

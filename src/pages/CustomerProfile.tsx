@@ -10,6 +10,7 @@ import { myFetch } from '../Services/FetchService'
 import AddCreditButton from '../Components/Buttons/AddCreditButton'
 import AddCredit from '../Components/AddCredit'
 import ShowQrCode from '../Components/ShowQrCode'
+import Breadcrumbs from '../Components/BreadCrumb'
 
 function CustomerProfile() {
   const [customer, setCustomer] = useState<Customer | undefined>()
@@ -27,43 +28,42 @@ function CustomerProfile() {
   }, [customerId, role])
 
   return customer ? (
-    <div
-      className={`mx-8 my-3 flex flex-col flex-1 lg:mx-auto ${
-        role === Role.Instructor ? `md:ml-36` : null
-      }`}
-    >
-      <img
-        className="profileImg"
-        src={
-          role === Role.Instructor
-            ? `${process.env.REACT_APP_API_URL}/customers/${customerId}/picture`
-            : `${process.env.REACT_APP_API_URL}/customers/1/picture`
-        }
-        alt="customer"
-      />
-      <h1 className="text-xl lg:text-2xl text-center mt-1 p-2 font-semibold">
-        {customer.name}
-      </h1>
-      <h2 className="text text-neutral-500">{customer.description}</h2>
-      <div>
-        {role === Role.Instructor ? (
-          <AttendButton />
-        ) : (
-          <>
-            <div>
-              <h1 className="text font-semibold">Credit: {credit}</h1>
-            </div>
-            <div className="flex flex-col justify-center mx-5 md:flex-row lg:justify-end">
-              <AddCreditButton setPopUp={setPopUp} />
-              <QRCodeButton setQr={setQr} setShowQr={setShowQR} />
-              <EditButton />
-            </div>
-            {popUp ? <AddCredit setPopUp={setPopUp} /> : null}
-            {showQr ? <ShowQrCode setShowQr={setShowQR} qr={qr} /> : null}
-          </>
-        )}
+    <>
+      <div>{role === Role.Instructor ? <Breadcrumbs /> : null}</div>
+      <div className="mx-8 my-5 flex flex-col flex-1 lg:mx-auto">
+        <img
+          className="profileImg"
+          src={
+            role === Role.Instructor
+              ? `${process.env.REACT_APP_API_URL}/customers/${customerId}/picture`
+              : `${process.env.REACT_APP_API_URL}/customers/1/picture`
+          }
+          alt="customer"
+        />
+        <h1 className="text-xl lg:text-2xl text-center mt-1 p-2 font-semibold">
+          {customer.name}
+        </h1>
+        <h2 className="text text-neutral-500">{customer.description}</h2>
+        <div className="mx-auto">
+          {role === Role.Instructor ? (
+            <AttendButton />
+          ) : (
+            <>
+              <div>
+                <h1 className="text font-semibold">Credit: {credit}</h1>
+              </div>
+              <div className="flex flex-col justify-center mx-5 md:flex-row lg:justify-end">
+                <AddCreditButton setPopUp={setPopUp} />
+                <QRCodeButton setQr={setQr} setShowQr={setShowQR} />
+                <EditButton />
+              </div>
+              {popUp ? <AddCredit setPopUp={setPopUp} /> : null}
+              {showQr ? <ShowQrCode setShowQr={setShowQR} qr={qr} /> : null}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   ) : null
 }
 

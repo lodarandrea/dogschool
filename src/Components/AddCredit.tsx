@@ -8,8 +8,8 @@ function AddCredit(props: { setPopUp: (value: boolean) => void }) {
 
   return (
     <div className="flex justify-center items-center fixed inset-0 bg-neutral-800/80 ">
-      <div className="bg-white w-11/12 lg:w-1/2">
-        <div className="flex flex-col justify-center">
+      <div className="bg-white w-11/12 lg:w-3/4">
+        <div className="flex flex-col justify-center ">
           <button
             onClick={() => props.setPopUp(false)}
             className="flex justify-end mx-4 my-2"
@@ -17,7 +17,7 @@ function AddCredit(props: { setPopUp: (value: boolean) => void }) {
             <XCircleIcon className="w-6" />
           </button>
           <div className="text font-medium">Credit: {credit}</div>
-          <div className="my-5 lg:my-10 flex flex-col justify-center md:flex-row">
+          <div className="my-5 lg:my-10 flex flex-col justify-center items-center md:flex-row">
             <button
               onClick={() => dispatcher(Increment(10))}
               className="buttons text-xs lg:text-base my-2 w-40 mx-5"

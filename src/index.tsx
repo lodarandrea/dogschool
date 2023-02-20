@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { BrowserRouter } from 'react-router-dom'
 import { store } from './Store'
 import { Provider } from 'react-redux'
 import { Auth0Provider } from '@auth0/auth0-react'
@@ -19,10 +18,9 @@ root.render(
       redirectUri={window.location.origin}
     >
       <Provider store={store}>
-        <BrowserRouter>
-          <ToastContainer />
-          <App />
-        </BrowserRouter>
+        <ToastContainer />
+
+        <App />
       </Provider>
     </Auth0Provider>
   </React.StrictMode>
