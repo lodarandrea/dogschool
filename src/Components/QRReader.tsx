@@ -6,7 +6,6 @@ import { myFetch } from '../Services/FetchService'
 
 function QRReader(props: { setCamera: (value: boolean) => void }) {
   const [qrResult, setQrResult] = useState('')
-  const [message, setMessage] = useState('')
   const { ref } = useZxing({
     paused: !props.setCamera,
     onResult(result) {
@@ -21,7 +20,6 @@ function QRReader(props: { setCamera: (value: boolean) => void }) {
     myFetch(
       `/customers/1/attend`,
       (data) => {
-        setMessage(data.message)
         toast.success(data.message, {
           position: toast.POSITION.TOP_CENTER,
         })
@@ -31,7 +29,7 @@ function QRReader(props: { setCamera: (value: boolean) => void }) {
   }
 
   return (
-    <div className="flex justify-center items-center fixed inset-0 bg-neutral-800/80 ">
+    <div className="flex justify-center items-center fixed inset-0 z-50 bg-neutral-800/80 ">
       <video ref={ref} className="max-w-md" />
     </div>
   )

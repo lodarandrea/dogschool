@@ -5,7 +5,7 @@ const LoginButton = () => {
 
   return (
     <button
-      className="buttons block m-auto text-2xl p-5 mb-20"
+      className="buttons block m-auto mb-20 sm:w-32 md:w-52 md:py-5 md:px-7  md:text-xl  lg:tracking-wider lg:leading-normal"
       onClick={() => loginWithRedirect()}
     >
       LOG IN

@@ -1,39 +1,21 @@
-import { Link, useLocation } from 'react-router-dom'
-import {
-  HomeIcon,
-  UserGroupIcon,
-  AcademicCapIcon,
-} from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
+import { menu } from '../model/Menu'
 
 function Footer() {
-  const location = useLocation()
-  const isIndex = location.pathname === '/'
-  const isCustomers = location.pathname === '/customers'
-  const isInstructors = location.pathname === '/instructors'
-
   return (
-    <div className="flex justify-center mb-2 font-semibold shadow-inner">
-      <Link to="/" className="footerLink">
-        <HomeIcon
-          className={`footerIcon ${
-            isIndex ? 'border-b-4 border-turquoise-800' : ''
-          }`}
-        />
-      </Link>
-      <Link to="/customers" className="footerLink">
-        <UserGroupIcon
-          className={`footerIcon ${
-            isCustomers ? 'border-b-4 border-turquoise-800' : ''
-          }`}
-        />
-      </Link>
-      <Link to="/instructors" className="footerLink">
-        <AcademicCapIcon
-          className={`footerIcon ${
-            isInstructors ? 'border-b-4 border-turquoise-800' : ''
-          }`}
-        />
-      </Link>
+    <div className="bg-white z-20 fixed bottom-0 w-full font-semibold shadow-inner md:flex md:static md:flex-1 md:w-auto md:items-stretch md:justify-start md:shadow-lg md:bg-white lg:hidden">
+      <div className="flex  justify-center mb-2 md:flex-col md:justify-start">
+        {menu.map((menuPoint) => (
+          <div key={menuPoint.name}>
+            <Link to={`${menuPoint.url}`} className="footerLink">
+              {menuPoint.icon}
+              <p className="hidden md:block md:text-xs md:px-2">
+                {menuPoint.name}
+              </p>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

@@ -47,7 +47,7 @@ function EditProfileForm() {
   return (
     <div>
       <form
-        className="flex flex-col justify-center items-center text-black my-2"
+        className="flex flex-col justify-center items-center text-black my-2 max-w-2xl m-auto"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
         <div className="editPageItems">
@@ -138,7 +138,7 @@ function EditProfileForm() {
           <label>Gender:</label>
           <div className="flex justify-center">
             {gender.map((g) => (
-              <div className="mx-3">
+              <div className="mx-1">
                 <input
                   type="radio"
                   id={g}
@@ -155,7 +155,7 @@ function EditProfileForm() {
             <p className="errorsMessage">{errors.gender.message}</p>
           )}
         </div>
-        <div className="text-lg flex flex-row items-baseline accent-turquoise-700 my-3">
+        <div className="text-base lg:text-lg flex flex-row items-baseline accent-turquoise-700 my-3">
           <input
             type="checkbox"
             id="subs"
@@ -164,13 +164,13 @@ function EditProfileForm() {
           />
           <label htmlFor="subs">Subscribe to newsletter</label>
         </div>
-        <div className="text-lg flex flex-row items-baseline accent-turquoise-700 my-3">
+        <div className="text-base lg:text-lg flex flex-row  items-baseline accent-turquoise-700 my-3">
           <label className="p-2" htmlFor="location">
             Location:
           </label>
           <select
             {...register('location')}
-            className="ml-2 z-10 inline-flex items-center py-2 px-2 text-sm font-medium  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
+            className="ml-2 z-10 inline-flex items-center py-2 px-2 text-sm  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
           >
             <option value={[]}></option>
             {locations.map((l) => (
@@ -180,7 +180,7 @@ function EditProfileForm() {
             ))}
           </select>
         </div>
-        <button type="submit" className="buttons mt-3 text-xl">
+        <button type="submit" className="buttons mt-3 w-36 md:w-48 md:mt-10">
           Submit
         </button>
       </form>

@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { Link, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Customers from './pages/Customers'
 import Instructors from './pages/Instructors'
 import InstructorProfile from './pages/InstructorProfile'
@@ -9,12 +9,15 @@ import Home from './Components/Home'
 import EditProfileForm from './pages/EditProfileForm'
 import { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useAppDispatch } from './Store/Hooks'
-import { logIn } from './Store/UserSlice'
+import { useAppDispatch, useAppSelector } from './Store/Hooks'
+import { logIn, Role } from './Store/UserSlice'
+import ErrorPage from './Components/Error'
 
 function App(): JSX.Element {
   const { user, isLoading } = useAuth0()
   const dispatcher = useAppDispatch()
+  const role = useAppSelector((state) => state.user.auth0User?.role)
+
   useEffect(() => {
     if (!isLoading && user) {
       dispatcher(
@@ -29,7 +32,7 @@ function App(): JSX.Element {
 
   if (isLoading) {
     return (
-      <div className="flex items-center m-auto max-w-sm h-screen text-center">
+      <div className="flex items-center justify-center h-screen text-center">
         <svg
           aria-hidden="true"
           className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-turquoise-400"
@@ -51,21 +54,64 @@ function App(): JSX.Element {
     )
   }
 
-  return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
-        <Route path="/customers" element={<Customers />} />
-        <Route path="customers/:customerId" element={<CustomerProfile />} />
-        <Route path="/instructors" element={<Instructors />} />
-        <Route
-          path="instructors/:instructorId"
-          element={<InstructorProfile />}
-        />
-        <Route path="/edit" element={<EditProfileForm />} />
-      </Route>
-    </Routes>
-  )
+  const router = createBrowserRouter([
+    {
+      element: <MainLayout />,
+      path: '/',
+      handle: { crumb: () => <Link to="/">Home</Link> },
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+
+        ...(role === Role.Instructor
+          ? [
+              {
+                path: '/customers',
+                handle: { crumb: () => <Link to="/customers">Customers</Link> },
+                children: [
+                  {
+                    index: true,
+                    element: <Customers />,
+                  },
+                  {
+                    path: '/customers/:customerId',
+                    element: <CustomerProfile />,
+                    handle: { crumb: () => <span>Customer Profile</span> },
+                  },
+                ],
+              },
+              {
+                path: '/instructors',
+                handle: {
+                  crumb: () => <Link to="/instructors">Instructors</Link>,
+                },
+                children: [
+                  {
+                    index: true,
+                    element: <Instructors />,
+                  },
+                  {
+                    path: '/instructors/:instructorId',
+                    element: <InstructorProfile />,
+                    handle: { crumb: () => <span>Instructor Profile</span> },
+                  },
+                ],
+              },
+            ]
+          : []),
+        {
+          path: '/edit',
+          element: <EditProfileForm />,
+          handle: { crumb: () => <span>Edit</span> },
+        },
+      ],
+    },
+  ])
+
+  return <RouterProvider router={router} />
 }
 
 export default App

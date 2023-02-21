@@ -4,7 +4,7 @@ function ReadQRCodeButton(props: {
   setCamera: (value: (camera: boolean) => boolean) => void
 }) {
   return (
-    <div className="text-xs font-bold p-5 text-center active:translate-y-1 transform transition;">
+    <div className="text-xs md:text-sm font-bold text-center active:translate-y-1 transform transition;">
       <button
         onClick={() => props.setCamera((camera) => !camera)}
         className="mx-5 my-9 group relative px-3 py-1 inline-block  rounded-xs text-turquoise-900 font-medium tracking-wide active:top-0.5 active:outline-none focus:outline-none"

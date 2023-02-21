@@ -5,9 +5,9 @@ function AddCreditButton(props: { setPopUp: (value: boolean) => void }) {
     <button
       type="button"
       onClick={() => props.setPopUp(true)}
-      className="mt-8 buttons"
+      className=" buttons profileButtons"
     >
-      Buy Credits
+      <p className="profileButtonsText">Buy Credits</p>
       <PlusCircleIcon className="buttonsIcon" />
     </button>
   )

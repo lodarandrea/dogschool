@@ -4,6 +4,7 @@ import Card from '../Components/Card'
 import { myFetch } from '../Services/FetchService'
 import SearchBar from '../Components/SearchBar'
 import { Instructor, TrainingType } from '../model/Instructors'
+import Breadcrumbs from '../Components/BreadCrumb'
 
 function Instructors() {
   const [instructorsList, setInstructorsList] = useState<Array<Instructor>>([])
@@ -40,11 +41,14 @@ function Instructors() {
   })
 
   return (
-    <div data-testid="instList">
-      <div className="flex justify-center mb-8 mx-8">
+    <div data-testid="instList" className="listContainer">
+      <div className="my-4">
+        <Breadcrumbs />
+      </div>
+      <div className="searchBar">
         <SearchBar setSearch={setSearch} />
         <select
-          className="ml-2 w-32 z-10 inline-flex items-center py-2.5 px-2 text-sm font-medium  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
+          className="ml-2 w-24 z-10 inline-flex items-center py-2.5 px-2 text-sm font-medium  bg-turquoise-600/10 border border-turquoise-800 rounded-lg hover:bg-turquoise-100  focus:outline-none"
           name="role"
           onChange={(e) => setValue(e.target.value)}
         >
@@ -58,7 +62,8 @@ function Instructors() {
           ))}
         </select>
       </div>
-      <div>
+
+      <div className="cardContainer">
         {handleFilter.map((instructor) => (
           <div role="listitem" key={instructor.id}>
             <Link to={`/instructors/${instructor.id}`}>

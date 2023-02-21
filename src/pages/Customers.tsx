@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import '../App.css'
 import SearchBar from '../Components/SearchBar'
 import { useEffect, useState } from 'react'
 import Card from '../Components/Card'
 import { myFetch } from '../Services/FetchService'
 import { Customer } from '../model/Customers'
+import Breadcrumbs from '../Components/BreadCrumb'
 
 function Customers() {
   const [customersList, setCustomersList] = useState<Array<Customer>>([])
@@ -22,13 +22,16 @@ function Customers() {
   })
 
   return (
-    <div>
-      <div className="flex justify-center mx-16 mb-8">
+    <div className="listContainer">
+      <div className="my-4">
+        <Breadcrumbs />
+      </div>
+      <div className="searchBar">
         <SearchBar setSearch={setSearch} />
       </div>
-      <div>
+      <div className="cardContainer">
         {handleFilter.map((customer) => (
-          <div className="contentItems" key={customer.id}>
+          <div key={customer.id}>
             <Link to={`/customers/${customer.id}`}>
               <Card
                 title={customer.name}
