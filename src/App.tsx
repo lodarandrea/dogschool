@@ -9,12 +9,15 @@ import Home from './Components/Home'
 import EditProfileForm from './pages/EditProfileForm'
 import { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useAppDispatch } from './Store/Hooks'
-import { logIn } from './Store/UserSlice'
+import { useAppDispatch, useAppSelector } from './Store/Hooks'
+import { logIn, Role } from './Store/UserSlice'
+import ErrorPage from './Components/Error'
 
 function App(): JSX.Element {
   const { user, isLoading } = useAuth0()
   const dispatcher = useAppDispatch()
+  const role = useAppSelector((state) => state.user.auth0User?.role)
+
   useEffect(() => {
     if (!isLoading && user) {
       dispatcher(
@@ -56,45 +59,49 @@ function App(): JSX.Element {
       element: <MainLayout />,
       path: '/',
       handle: { crumb: () => <Link to="/">Home</Link> },
+      errorElement: <ErrorPage />,
       children: [
         {
           index: true,
           element: <Home />,
         },
-        {
-          path: '/customers',
-          handle: { crumb: () => <Link to="/customers">Customers</Link> },
-          children: [
-            {
-              index: true,
-              element: <Customers />,
-            },
-            {
-              path: '/customers/:customerId',
-              element: <CustomerProfile />,
-              handle: { crumb: () => <span>Customer Profile</span> },
-            },
-          ],
-        },
 
-        {
-          path: '/instructors',
-          handle: {
-            crumb: () => <Link to="/instructors">Instructors</Link>,
-          },
-          children: [
-            {
-              index: true,
-              element: <Instructors />,
-            },
-            {
-              path: '/instructors/:instructorId',
-              element: <InstructorProfile />,
-              handle: { crumb: () => <span>Instructor Profile</span> },
-            },
-          ],
-        },
-
+        ...(role === Role.Instructor
+          ? [
+              {
+                path: '/customers',
+                handle: { crumb: () => <Link to="/customers">Customers</Link> },
+                children: [
+                  {
+                    index: true,
+                    element: <Customers />,
+                  },
+                  {
+                    path: '/customers/:customerId',
+                    element: <CustomerProfile />,
+                    handle: { crumb: () => <span>Customer Profile</span> },
+                  },
+                ],
+              },
+              {
+                path: '/instructors',
+                handle: {
+                  crumb: () => <Link to="/instructors">Instructors</Link>,
+                },
+                children: [
+                  {
+                    index: true,
+                    element: <Instructors />,
+                  },
+                  {
+                    path: '/instructors/:instructorId',
+                    element: <InstructorProfile />,
+                    handle: { crumb: () => <span>Instructor Profile</span> },
+                  },
+                ],
+              },
+            ]
+          : []),
         {
           path: '/edit',
           element: <EditProfileForm />,
