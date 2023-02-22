@@ -11,7 +11,7 @@ import { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useAppDispatch, useAppSelector } from './Store/Hooks'
 import { logIn, Role } from './Store/UserSlice'
-import ErrorPage from './Components/Error'
+import ErrorPage from './pages/Error'
 
 function App(): JSX.Element {
   const { user, isLoading } = useAuth0()

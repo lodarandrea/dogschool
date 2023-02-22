@@ -11,7 +11,7 @@ function MainLayout() {
   const { isAuthenticated } = useAuth0()
 
   return (
-    <div className=" bg-white flex flex-col h-full overflow-auto border-t-8 border-turquoise-800 relative">
+    <div className=" bg-white flex flex-col h-full border-t-8 border-turquoise-800 relative">
       <Header />
       <div className="flex">
         {!isAuthenticated || role === Role.Customer ? null : <Footer />}

@@ -42,7 +42,7 @@
 }
 
 .footerIcon {
-  @apply w-11 h-12 p-2 mx-3 md:mr-0 md:py-0 md:w-10 md:h-auto;
+  @apply w-9 h-12 p-1 mx-3 md:mr-0 md:py-0 md:h-auto;
 }
 
 .buttons {
@@ -78,7 +78,7 @@ div .cardContainer > div {
 }
 
 .searchBar {
-  @apply flex justify-center mb-8 mt-3 mx-5 max-w-sm md:mx-auto md:w-11/12 md:col-start-2 md:col-span-4 lg:max-w-lg;
+  @apply flex justify-center mb-8 mt-3 max-w-sm mx-auto md:w-11/12 md:col-start-2 md:col-span-4 lg:max-w-lg;
 }
 
 .profileButtons {
