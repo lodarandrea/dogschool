@@ -45,7 +45,6 @@ function Header() {
                 onClick={() => {
                   setOpen(!open)
                 }}
-                data-popover-target="popover-default"
               >
                 <UserCircleIcon className="h-7 w-7 md:h-9 md:w-9 lg:h-10 lg:w-10"></UserCircleIcon>
               </button>
